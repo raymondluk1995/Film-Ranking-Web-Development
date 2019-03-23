@@ -16,15 +16,15 @@
   <nav class="sd-top sd-left">
 
     <ul class="sd-nav black sd-nav-h col">
-      <li class="l2 s1"><a href="#" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">POLLS WEB</span></a></li>
-      <li class="nav-title l8 s1 hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">MAKE POLLS EASIER FOR YOU</span></a></li>
+      <li class="l2 s1"><a href="#" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">Movie Polls</span></a></li>
+      <li class="nav-title l8 s1 hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">Find Movie Polls Here!</span></a></li>
       <li class="sd-right"><a href="#" class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i></a></li>
     </ul>
   </nav>
 
   <!-- login form -->
   <div class="center-align login-content">
-    <header id="login-title" class="lv1title"><b>LOGIN</b></header>
+    <header class="lv1title"><b>LOGIN</b></header>
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 form-box">
@@ -34,7 +34,7 @@
               <p>Enter your username and password to log on:</p>
             </div>
             <div class="form-top-right">
-              <i class="fas fa-poll-h hide-small"></i>
+              <i class="fas fa-film hide-small"></i>
             </div>
           </div>
           <div class="form-bottom">
@@ -58,6 +58,86 @@
       </div>
     </div>
   </div>
+
+
+  <!-- Registration Part -->
+  <div class="center-align login-content">
+    <header class="lv1title" id="reg-lv1title"><b>Registration</b></header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 form-box">
+          <div class="form-top">
+            <div class="form-top-left">
+              <h3>Sign Up Now!</h3>
+              <p>Please fill in the blanks below:</p>
+            </div>
+            <div class="form-top-right">
+              <i class="fas fa-user-plus hide-small"></i>
+            </div>
+          </div>
+          <div class="form-bottom">
+            <form role="form" action="" method="post" class="login-form">
+              <div class="form-group">
+                <label for="form-username">Enter Username</label>
+                <input type="text" name="form-username" placeholder="Please type in your username" class="form-username form-control">
+              </div>
+              <div class="form-group">
+                <label for="form-password">Password</label>
+                <input type="password" name="form-password" placeholder="Please type in your password" class="form-password form-control">
+              </div>
+              <div class="form-group">
+                <label for="form-confirm-password">Confirm_Password</label>
+                <input type="password" name="form-confirm-password" placeholder="Please type in your password again" class="form-password form-control">
+              </div>
+              <div class="form-group">
+                <label for="form-email">Email Address</label>
+                <input type="email" id="form-email" placeholder="Please type in your email address" class="form-control">
+              </div>
+              <fieldset class="form-group">
+                <!-- <div class="row"> -->
+                <!-- <legend class="col-form-label pt-0 margin-left-16">Preference</legend> -->
+                <legend>Preference</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference1" value="Romantic">
+                    <label class="form-check-label" for="gridPreference1">Romantic Movie</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference2" value="Horror">
+                    <label class="form-check-label" for="gridPreference2">Horror Movie</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference3" value="Fiction">
+                    <label class="form-check-label" for="gridPreference3">Fiction Movie</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference4" value="Documentary">
+                    <label class="form-check-label" for="gridPreference4">Documentary Movie</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference5" value="Comedy">
+                    <label class="form-check-label" for="gridPreference5">Comedy Movie</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference6" value="Action">
+                    <label class="form-check-label" for="gridPreference6">Action Movie</label>
+                  </div>
+
+                </div>
+                <!-- </div> -->
+              </fieldset>
+              <button type="submit" class="button lightred"><i class="fas fa-pencil-alt margin-right-8"></i>Register Now!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 
   <!-- footer part -->
