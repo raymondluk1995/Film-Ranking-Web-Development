@@ -1,4 +1,4 @@
-/* Classes with the header of "sd-" means "self-defined" */
+/* Classes with the header of "sd-" means "self-defined", in case of colliding with Bootstrap */
 
 html,body{
   font-size: 14px;
@@ -20,6 +20,11 @@ body{
   background-image: url('../img/bg.png');
 }
 
+img{
+  width:100%;
+  height:auto;
+}
+
 
 :root {
   --lightBlue: rgb(0,156,222);
@@ -29,9 +34,12 @@ body{
   --lightGrey:#D3D6DB;
   --lighterGrey:#eee;
   --black:#000;
+  --lightBlack:#444;
   --white:#fff;
   --green:rgb(73, 156, 76);
   --lightRed: #FF847C;
+  --darkRed: rgb(110, 25, 63);
+  --darkBlue:rgb(37, 51, 70);
 }
 
 .button {
@@ -156,7 +164,7 @@ li.sd-right {
 }
 
 .login-content{
-  padding:100px 0 200px 0;
+  padding:80px 0;
 }
 .login-content .text{
   color:var(--white);
@@ -248,6 +256,88 @@ li.sd-right {
 }
 
 
+/* -----------carousel tool ---------------*/
+
+.content{
+  max-width: 1100px;
+  margin:96px auto;
+}
+
+.carousel-box{
+  padding:0 16px;
+  position:relative;
+}
+
+.carousel{
+  position:relative;
+}
+
+.left-top{
+  position:absolute;
+  top:0;
+  left:0;
+  padding-top:24px;
+  padding-left:16px;
+}
+
+.carousel-tag{
+  background-color: var(--lightGrey);
+  color:var(--black);
+  padding:8px 12px;
+  border-radius:3px;
+}
+
+.carousel-tag a{
+  color:var(--black);
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation: animationbottom 0.6s;
+  animation: animationbottom 0.6s;
+}
+@-webkit-keyframes animationbottom {
+  from {bottom: -300px;opacity: 0;}
+  to {bottom: 0;opacity: 1}
+}
+@keyframes animationbottom {
+  from {bottom: -300px;opacity: 0;}
+  to {bottom: 0;opacity: 1}
+}
+
+.non-display{
+  display:none;
+}
+
+.tool-bar{
+  background-color:var(--darkBlue);
+  color:var(--white);
+  font-size:20px;
+  padding:5px 8px;
+  position:absolute;
+  bottom:0;
+  left:16px;
+  right:16px;
+}
+
+.dots{
+  width:10px;
+  height:10px;
+  border:1px solid var(--white);
+  display:inline-block;
+  border-radius:50%;
+  margin:3px;
+  cursor:pointer;
+}
+
+.carousel-btn {
+  cursor: pointer;
+}
+
+.active, .dots:hover{
+  background-color: var(--white);
+}
+
 
 /* ------------------ color tool -----------------*/
 .black, .hover-black:hover {
@@ -281,11 +371,17 @@ li.sd-right {
 }
 
 /* --------- grid tool  ----------------*/
-.row-padding, .row-padding > .col {
+.sd-row::after, .sd-row::before {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.sd-row-padding, .sd-row-padding > .col {
   padding: 0 8px;
 }
 
-.col {
+.sd-col {
   float: left;
 }
 
@@ -363,9 +459,26 @@ li.sd-right {
   margin-right:8px;
 }
 
+.margin-right-28{
+  margin-right: 28px;
+}
+
+.margin-left-28{
+  margin-left: 28px;
+}
+
+.margin-left-8{
+  margin-left:8px;
+}
+
 .margin-left-16{
   margin-left: 16px;
 }
+
+.margin-left{
+  margin-left:18px;
+}
+
 
 .margin-top{
   margin-top: 18px;
@@ -375,4 +488,8 @@ li.sd-right {
 /* -----------text-alignment tool -----------*/
 .center-align{
   text-align: center;
+}
+
+.right-align{
+  text-align: right;
 }
