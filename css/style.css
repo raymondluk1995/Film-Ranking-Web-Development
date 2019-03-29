@@ -272,6 +272,10 @@ li.sd-right {
   position:relative;
 }
 
+.carousel img{
+  height:550px;
+}
+
 .left-top{
   position:absolute;
   top:0;
@@ -421,6 +425,10 @@ li.sd-right {
   .hide-medium {
     display: none !important;
   }
+
+  .carousel img{
+    height:auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -443,6 +451,10 @@ li.sd-right {
   }
   .hide-small {
     display: none !important;
+  }
+
+  .carousel img{
+    height:auto;
   }
 }
 
