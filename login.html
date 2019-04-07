@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Login</title>
+  <link rel="icon" type="image/png" href="./img/logo.jpg" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
@@ -18,12 +19,22 @@
     <ul class="sd-nav black sd-nav-h col">
       <li class="l2 s1"><a href="#" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">Movie Polls</span></a></li>
       <li class="nav-title l8 s1 hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">Get Movie Polls Here!</span></a></li>
-      <li class="sd-right"><a href="#" class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i></a></li>
+      <li class="sd-right" id="nav-user-tag"><a href="#" class="text-lightgrey large hover-lightgrey " id="nav-user-a"><i class="fa fa-user" id="nav-user-i"></i></a></li>
     </ul>
   </nav>
 
+  <!-- log out confirmation part -->
+  <div class="margin-top-64 padding-tb non-display" id="logout-part">
+    <div class="shadow lightyellow sd-container round sd-right-8 center-align center-block">
+      <button class="btn top-right" onclick="close_window(event)">x</button>
+      <h4>&nbsp &nbsp Hello！<br />Do you want to sign out?</h4>
+      <button type="submit" class="button lightred" onclick="sign_out(event)"><i class="fas fa-sign-in-alt margin-right-8"></i>Sign out!</button>
+    </div>
+  </div>
+
+
   <!-- login form -->
-  <div class="center-align login-content">
+  <div class="center-align login-content non-display outer" id="login-part">
     <header class="lv1title"><b>LOGIN</b></header>
     <div class="container">
       <div class="row">
@@ -38,20 +49,20 @@
             </div>
           </div>
           <div class="form-bottom">
-            <form role="form" action="" method="post" class="login-form">
+            <form role="form" action="" method="post" class="login-form" id="loginForm">
               <div class="form-group">
                 <label class="sr-only" for="form-username">Username</label>
-                <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+                <input type="text" name="form-username" placeholder="Username..." class="form-username form-control">
               </div>
               <div class="form-group">
                 <label class="sr-only" for="form-password">Password</label>
-                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control">
               </div>
-              <button type="submit" class="button green"><i class="fas fa-sign-in-alt margin-right-8"></i>Sign in!</button>
+              <button type="button" onclick="sign_in()" class="button green"><i class="fas fa-sign-in-alt margin-right-8" id="sign-in-btn"></i>Sign in!</button>
             </form>
             <div class="register center-align">
               <p>Don't have an account? Click here to register</p>
-              <button type="button" name="to-registration" class="button lightred justify-content-center" id="register-btn"><i class="fas fa-pencil-alt margin-right-8"></i>Register</button>
+              <button onclick="register()" type="button" name="to-registration" class="button lightred justify-content-center" id="register-btn"><i class="fas fa-pencil-alt margin-right-8"></i>Register</button>
             </div>
           </div>
         </div>
@@ -61,9 +72,9 @@
 
 
   <!-- Registration Part -->
-  <div class="center-align login-content">
-    <header class="lv1title" id="reg-lv1title"><b>Registration</b></header>
+  <div class="center-align login-content outer" id="register-part">
     <div class="container">
+      <header class="lv1title" id="reg-lv1title"><b>Registration</b></header>
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 form-box">
           <div class="form-top">
@@ -76,57 +87,45 @@
             </div>
           </div>
           <div class="form-bottom">
-            <form role="form" action="" method="post" class="login-form">
+            <form role="form" action="" method="post" class="login-form" id="registerForm">
               <div class="form-group">
-                <label for="form-username">Enter Username</label>
-                <input type="text" name="form-username" placeholder="Please type in your username" class="form-username form-control">
+                <label for="form-username">Enter Username (at least 4 characters)</label>
+                <input type="text" name="username" placeholder="Please type in your username" class="form-username form-control" id="form-username">
               </div>
               <div class="form-group">
                 <label for="form-password">Password</label>
-                <input type="password" name="form-password" placeholder="Please type in your password" class="form-password form-control">
+                <input type="password" name="password" placeholder="Please type in your password" class="form-password form-control" id="form-password">
               </div>
               <div class="form-group">
                 <label for="form-confirm-password">Confirm_Password</label>
-                <input type="password" name="form-confirm-password" placeholder="Please type in your password again" class="form-password form-control">
+                <input type="password" name="confirm-password" placeholder="Please type in your password again" class="form-password form-control">
               </div>
               <div class="form-group">
                 <label for="form-email">Email Address</label>
-                <input type="email" id="form-email" placeholder="Please type in your email address" class="form-control">
+                <input type="email" id="id-form-email" name="email" placeholder="Please type in your email address" class="form-control">
               </div>
-              <fieldset class="form-group">
-                <!-- <div class="row"> -->
-                <!-- <legend class="col-form-label pt-0 margin-left-16">Preference</legend> -->
-                <legend>Preference</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference1" value="Romantic">
-                    <label class="form-check-label" for="gridPreference1">Romantic Movie</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference2" value="Horror">
-                    <label class="form-check-label" for="gridPreference2">Horror Movie</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference3" value="Fiction">
-                    <label class="form-check-label" for="gridPreference3">Fiction Movie</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference4" value="Documentary">
-                    <label class="form-check-label" for="gridPreference4">Documentary Movie</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference5" value="Comedy">
-                    <label class="form-check-label" for="gridPreference5">Comedy Movie</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="gridPreference" id="gridPreference6" value="Action">
-                    <label class="form-check-label" for="gridPreference6">Action Movie</label>
-                  </div>
 
-                </div>
-                <!-- </div> -->
-              </fieldset>
-              <button type="submit" class="button lightred"><i class="fas fa-pencil-alt margin-right-8"></i>Register Now!</button>
+              <label>Preference (at least 1 choice)</label>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Romantic Movie">Romantic Movie</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Horror Movie">Horror Movie</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Fiction Movie">Fiction Movie</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Documentary Movie">Documentary Movie</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Comedy Movie">Comedy Movie</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Action Movie">Action Movie</label>
+              </div>
+
+              <button type="button" onclick="finish_register()" class="button lightred"><i class="fas fa-pencil-alt margin-right-8"></i>Register Now!</button>
             </form>
           </div>
         </div>
@@ -144,6 +143,8 @@
   <footer class="black sd-bottom sd-left center-align padding-footer">
     <p>Students from <a href="https://uwa.edu.au" class="text-lightgrey" target="_blank">UWA</a></p>
   </footer>
+
+  <script src="js/shared_part.js" charset="utf-8"></script>
 </body>
 
 </html>

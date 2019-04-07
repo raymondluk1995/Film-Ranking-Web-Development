@@ -40,6 +40,7 @@ img{
   --lightRed: #FF847C;
   --darkRed: rgb(110, 25, 63);
   --darkBlue:rgb(37, 51, 70);
+  --lightYellow: #fffbb1;
 }
 
 .button {
@@ -87,6 +88,16 @@ img{
 
 .sd-right{
   right:0;
+}
+
+.sd-right-8{
+  right:8px;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+  float:right;
 }
 
 
@@ -142,12 +153,43 @@ li.sd-right {
   padding:0 24px;
 }
 
-#nav-user{
-  margin-left: 4px;
+
+
+.shadow, .hover-shadow:hover {
+  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 4px 20px rgba(0,0,0,0.19);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 4px 20px rgba(0,0,0,0.19);
+}
+
+.round {
+  border-radius: 4px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: var(--lightRed);
+  padding: 3px 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+.btn:hover, .btn:active, .btn:focus {
+  background-color: var(--lightGrey);
 }
 
 
 /* --------------login part tool -------------------*/
+
+.outer{
+  text-align: center;
+}
 
 .lv1title{
   padding: 8px 0;
@@ -368,6 +410,11 @@ li.sd-right {
   color: var(--white);
 }
 
+.lightyellow, .hover-lightyellow:hover {
+  background-color: var(--lightYellow) !important;
+  color: #000 !important;
+}
+
 
 /* ----------font-size tool----------- */
 .large{
@@ -375,11 +422,18 @@ li.sd-right {
 }
 
 /* --------- grid tool  ----------------*/
-.sd-row::after, .sd-row::before {
+.sd-container::after,.sd-container::before,.sd-row::after, .sd-row::before {
   content: "";
   clear: both;
   display: table;
 }
+
+.sd-container {
+  padding: 0 16px;
+  width:300px;
+}
+
+
 
 .sd-row-padding, .sd-row-padding > .col {
   padding: 0 8px;
@@ -408,7 +462,7 @@ li.sd-right {
   }
 }
 
-@media only screen and (max-width: 1100px) and (min-width:601px){
+@media only screen and (max-width: 1100px) and (min-width:701px){
   .m1 {width: 8.33%}
   .m2 {width: 16.66%}
   .m3 {width: 25%}
@@ -431,7 +485,7 @@ li.sd-right {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .s1 {width: 8.33%}
   .s2 {width: 16.66%}
   .s3 {width: 25%}
@@ -494,6 +548,15 @@ li.sd-right {
 
 .margin-top{
   margin-top: 18px;
+}
+
+.margin-top-64{
+  margin-top:64px;
+}
+
+.padding-tb {
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 
