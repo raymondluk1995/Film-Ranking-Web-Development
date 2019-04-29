@@ -1,0 +1,2 @@
+1. How to Create a Login Form with Ajax: https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm
+2.Form Submission Using Ajax, PHP and Javascript https://www.formget.com/form-submission-using-ajax-php-and-javascript/
