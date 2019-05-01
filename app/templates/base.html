@@ -18,12 +18,30 @@
   <nav class="sd-top sd-left">
 
     <ul class="sd-nav black sd-nav-h col">
-      <li class="l2 s1"><a href="#" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">Movie Polls</span></a></li>
+      <li class="l2 s1"><a href="{{url_for('index')}}" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">Movie Polls</span></a></li>
       <li class="nav-title l8 s1 hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">Get Movie Polls Here!</span></a></li>
-      <li class="sd-right"><a href="/login" class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i></a></li>
+      {% if current_user.is_anonymous %}
+      <li class="sd-right"><a href="{{url_for('login')}}" class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i></a></li>
+      {% else %}
+      {% if current_user.username|length >5 %}
+      <li class="sd-right"><a onclick = "log_out_show()"class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i>&nbsp{{ current_user.username[:3]}}...</a></li>
+      {% else %}
+      <li class="sd-right"><a onclick = "log_out_show()"class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i>&nbsp{{ current_user.username}}</a></li>
+      {% endif %}
+      {% endif %}
     </ul>
   </nav>
   <br><br>
+
+  <!-- log out confirmation part -->
+  <div class="margin-top-64 padding-tb non-display" id="logout-part">
+    <div class="shadow lightyellow sd-container round sd-right-8 center-align center-block">
+      <button class="btn top-right" onclick="close_window(event)">x</button>
+      <h4>&nbsp &nbsp Hello！<br />Do you want to sign out?</h4>
+      <a href="{{url_for('logout')}}"type="submit" class="button lightred" ><i class="fas fa-sign-in-alt margin-right-8"></i>Sign out!</a>
+    </div>
+  </div>
+
 
   {% block content %}{% endblock %}
 

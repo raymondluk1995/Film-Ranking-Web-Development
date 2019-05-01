@@ -2,8 +2,11 @@ var login_status =0;
 var display_user_name = "  ";
 var user = "";
 
-var user_icon = document.getElementById('nav-user-tag');
-user_icon.addEventListener("click",log_in_out);
+function log_out_show(){
+  var logout_part = document.getElementById('logout-part');
+  logout_part.style.display = "block";
+}
+
 
 
 function close_window(event){
