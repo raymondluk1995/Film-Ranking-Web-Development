@@ -38,11 +38,11 @@
                 {% endfor %}
               </div>
               <!-- <button type="button" class="button green"><i class="fas fa-sign-in-alt margin-right-8" id="sign-in-btn"></i>Sign In!</button> -->
-              {{form.submit(size=32,class_="button green submit_btn")}}
+              {{form.submit(size=32,class_="button green submit_btn hover-text-lightgrey")}}
             </form>
             <div class="register center-align">
               <p>Don't have an account? Click here to register</p>
-              <a href="{{url_for('register')}}"class="button lightred justify-content-center" id="register-btn"><i class="fas fa-pencil-alt margin-right-8"></i>Register</a>
+              <a href="{{url_for('register')}}"class="button lightred justify-content-center hover-text-lightgrey" id="register-btn"><i class="fas fa-pencil-alt margin-right-8"></i>Register</a>
             </div>
           </div>
         </div>

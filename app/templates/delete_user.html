@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+
+<!-- Registration Part -->
+<div class="center-align login-content outer" id="register-part">
+  <div class="container">
+    <header class="lv1title" id="reg-lv1title"><b>Delete Users</b></header>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 form-box">
+        <div class="form-top">
+          <div class="form-top-left">
+            <h3>Delete User</h3>
+            <p>Please choose the normal user you want to delete</p>
+          </div>
+          <div class="form-top-right">
+            <i class="fas fa-user-minus"></i>
+          </div>
+        </div>
+        <div class="form-bottom">
+          <form role="form" action="" method="post" class="login-form" id="registerForm">
+            <div class="form-group">
+              {{user_form.hidden_tag()}}
+
+            <label>These are the users in the database</label>
+            <div class="form-group">
+              {{user_form.example}}
+              {% for error in user_form.example.errors %}
+              <span class="alert">[{{ error }}]</span>
+              {% endfor %}
+
+            </div>
+
+            {{user_form.submit(size=32,class_="button lightred submit_btn hover-text-lightgrey")}}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

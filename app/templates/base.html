@@ -10,7 +10,6 @@
   <link rel="stylesheet" href = "{{url_for('static',filename='assets/bootstrap/css/bootstrap.min.css')}}" >
   <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
   <link rel="stylesheet" href = "{{url_for('static',filename='css/style.css')}}" >
-  <!-- <link rel="stylesheet" href="css/sample.css"> -->
 </head>
 
 <body>
@@ -35,7 +34,7 @@
 
   <!-- log out confirmation part -->
   <div class="margin-top-64 padding-tb non-display" id="logout-part">
-    <div class="shadow lightyellow sd-container round sd-right-8 center-align center-block">
+    <div class="shadow lightYellow sd-container round sd-right-8 center-align center-block">
       <button class="btn top-right" onclick="close_window(event)">x</button>
       <h4>&nbsp &nbsp Hello！<br />Do you want to sign out?</h4>
       <a href="{{url_for('logout')}}"type="submit" class="button lightred" ><i class="fas fa-sign-in-alt margin-right-8"></i>Sign out!</a>
@@ -43,12 +42,25 @@
   </div>
 
 
+  <!-- buttons for admin -->
+  {% if current_user.is_authenticated %}
+  {% if current_user.administrator %}
+  <div class="sd-middle margin-top-40">
+      <a href="" class="button lightBlue hover-text-lightgrey padding-center">Create Poll</a>
+      <a href="" class="button lightYellow hover-text-lightgrey padding-center">Delete Poll</a>
+      <a href="{{url_for('delete_user')}}" class="button lightred hover-text-lightgrey padding-center">Delete User</a>
+      <a href="" class="button green hover-text-lightgrey padding-center">Delete Response</a>
+  </div>
+  {% endif %}
+  {% endif %}
+
+
   {% block content %}{% endblock %}
 
 
   <!-- footer part -->
   <footer class="black sd-bottom sd-left center-align padding-footer">
-    <p>Students from <a href="https://uwa.edu.au" class="text-lightgrey" target="_blank">UWA</a></p>
+    <p>Created by <a href="https://www.facebook.com/profile.php?id=100017465704093" class="text-lightgrey" target="_blank">Minrui Lu</a> and <a class="text-lightgrey" href="https://www.facebook.com/sub1433">Wenjing Zheng</a></p>
   </footer>
 
   <script src="static/js/carousel.js" charset="utf-8"></script>

@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField,  SubmitField, SelectMultipleField,widgets
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo,Length
 from app.models import User
+from app import db
+from wtforms_sqlalchemy.fields import QuerySelectField
 
 
 
@@ -42,3 +44,22 @@ class RegistrationForm(FlaskForm):
     def validate_example(self,example):
         if(len(self.example.data)<1):
             raise ValidationError('Please choose at least one preference')
+
+class ShowUserForm(FlaskForm):
+    list_of_users = [u.username for u in User.query.filter_by(administrator=0)]
+    users = [(x, x) for x in list_of_users]
+    example = MultiCheckboxField('Label', choices=users)
+    # print(example)
+
+    submit = SubmitField('Delete User')
+
+    # def update(self):
+    #     list_of_users = [u.username for u in User.query.filter_by(administrator=0)]
+    #     users = [(x, x) for x in list_of_users]
+    #     # print(self.users)
+    #     self.example = MultiCheckboxField('Label',choices=users)
+    #     print(self.example)
+
+    def validate_example(self,example):
+        if(len(self.example.data)<1):
+            raise ValidationError('You are not deleting any user!')
