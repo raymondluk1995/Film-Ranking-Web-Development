@@ -42,7 +42,7 @@
 
                 <!-- </div> -->
               <br>
-              <button id="submit_btn" type="submit" onclick="display()" class="button lightred full-width"><i class="fas fa-pencil-alt margin-right-8"></i>Submit Now!</button>
+              <a id="submit_btn" type="submit" class="button lightred full-width hover-text-lightgrey"><i class="fas fa-pencil-alt margin-right-8"></i>Submit Now!</a>
             	<div id="errorAlert" class="alert alert-danger non-display" role="alert" ></div>
           </div>
         </div>
@@ -69,6 +69,7 @@
               options_list.push(options[i].value);
             }
             var options_string = options_list.join(',');
+            console.log(options_string);
 
             $.ajax({
         			data : {
@@ -84,9 +85,15 @@
         			if (data.error) {
         				$('#errorAlert').text(data.error).show();
         			}
+              else{
+                console.log("Success");
+              }
         		});
 
         		event.preventDefault();
           })
       });
   </script>
+
+
+  {% endblock %}

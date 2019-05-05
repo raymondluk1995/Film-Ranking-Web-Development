@@ -80,3 +80,17 @@ def delete_user():
         # print(users)
         return redirect(url_for('index'))
     return render_template('delete_user.html',title='Delete User',user_form=user_form)
+
+@app.route('/create_poll',methods=['GET', 'POST'])
+def create_poll():
+    return render_template("create_poll.html",title='Create Poll')
+
+@app.route('/create_poll_submit',methods=['GET', 'POST'])
+def create_poll_submit():
+    poll_name = request.values.get('poll_name')
+    options = request.values.get('options')
+    category = request.values.get('category')
+    print(poll_name)
+    print(options)
+    print(category)
+    return redirect(url_for('index'))

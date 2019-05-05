@@ -292,6 +292,10 @@ li.sd-right {
   border-radius: 4px;
 }
 
+.full-width{
+  width:100%;
+}
+
 /* -------------registration tool ---------------*/
 
 #reg-lv1title{
