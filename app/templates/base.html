@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>{{title}}</title>
+  <link rel="icon" type="image/png" href = "{{url_for('static',filename='img/logo.jpg')}}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href = "{{url_for('static',filename='assets/bootstrap/css/bootstrap.min.css')}}" >
+  <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+  <link rel="stylesheet" href = "{{url_for('static',filename='css/style.css')}}" >
+</head>
+
+<body>
+  <!-- nav part -->
+  <nav class="sd-top sd-left">
+
+    <ul class="sd-nav black sd-nav-h col">
+      <li class="l2 s1"><a href="{{url_for('index')}}" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">Movie Polls</span></a></li>
+      <li class="nav-title l8 s1 hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">Get Movie Polls Here!</span></a></li>
+      {% if current_user.is_anonymous %}
+      <li class="sd-right"><a href="{{url_for('login')}}" class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i></a></li>
+      {% else %}
+      {% if current_user.username|length >5 %}
+      <li class="sd-right"><a onclick = "log_out_show()"class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i>&nbsp{{ current_user.username[:3]}}...</a></li>
+      {% else %}
+      <li class="sd-right"><a onclick = "log_out_show()"class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i>&nbsp{{ current_user.username}}</a></li>
+      {% endif %}
+      {% endif %}
+    </ul>
+  </nav>
+  <br><br>
+
+  <!-- log out confirmation part -->
+  <div class="margin-top-64 padding-tb non-display" id="logout-part">
+    <div class="shadow lightYellow sd-container round sd-right-8 center-align center-block">
+      <button class="btn top-right" onclick="close_window(event)">x</button>
+      <h4>&nbsp &nbsp Hello！<br />Do you want to sign out?</h4>
+      <a href="{{url_for('logout')}}"type="submit" class="button lightred" ><i class="fas fa-sign-in-alt margin-right-8"></i>Sign out!</a>
+    </div>
+  </div>
+
+
+  <!-- buttons for admin -->
+  {% if current_user.is_authenticated %}
+  {% if current_user.administrator %}
+  <div class="sd-middle margin-top-40">
+      <a href="" class="button lightBlue hover-text-lightgrey padding-center">Create Poll</a>
+      <a href="" class="button lightYellow hover-text-lightgrey padding-center">Delete Poll</a>
+      <a href="{{url_for('delete_user')}}" class="button lightred hover-text-lightgrey padding-center">Delete User</a>
+      <a href="" class="button green hover-text-lightgrey padding-center">Delete Response</a>
+  </div>
+  {% endif %}
+  {% endif %}
+
+
+  {% block content %}{% endblock %}
+
+
+  <!-- footer part -->
+  <footer class="black sd-bottom sd-left center-align padding-footer">
+    <p>Created by <a href="https://www.facebook.com/profile.php?id=100017465704093" class="text-lightgrey" target="_blank">Minrui Lu</a> and <a class="text-lightgrey" href="https://www.facebook.com/sub1433">Wenjing Zheng</a></p>
+  </footer>
+
+  <script src="static/js/carousel.js" charset="utf-8"></script>
+  <script src="static/js/shared_part.js" charset="utf-8"></script>
+
+</body>
+
+</html>
