@@ -64,7 +64,7 @@
             </div>
           </div>
           <div class="form-bottom">
-            <action="" method="get" id="nameform">
+            <form role="form" action="" method="post" class="login-form">
 
             <div class="form-group">
               <label for="form-username">Enter Pollname</label>
@@ -90,7 +90,7 @@
 
                 <!-- </div> -->
               <br>
-              <button type="submit" class="button lightred"><i class="fas fa-pencil-alt margin-right-8"></i>Submit Now!</button>
+              <button type="submit" class="button lightred "><i class="fas fa-pencil-alt margin-right-8"></i>Submit Now!</button>
 
           </div>
         </div>

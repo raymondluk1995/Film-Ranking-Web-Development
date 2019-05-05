@@ -63,3 +63,7 @@ class ShowUserForm(FlaskForm):
     def validate_example(self,example):
         if(len(self.example.data)<1):
             raise ValidationError('You are not deleting any user!')
+
+
+# class CreatePollForm(FlaskForm):
+#     pollname = StringField('Pollname', validators=[DataRequired(),Length(max=40)]],render_kw={"placeholder": "Poll Name..."})

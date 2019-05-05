@@ -103,3 +103,14 @@ function finish_register(){
   }
 
 }
+
+// function display(){
+//   var poll_name = document.getElementById('poll_name').value;
+//   var options = document.getElementsByClassName('poll-option');
+//   var category = document.getElementById('category').value;
+//   console.log(poll_name);
+//   var options_list =[];
+//   for (var i=0; i<options.length;i++){
+//     options_list.push(options[i].value);
+//   }
+// }
