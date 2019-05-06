@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect,request
 from app import app,db
-from app.forms import LoginForm,RegistrationForm,ShowUserForm,MultiCheckboxField,ShowPollForm
+from app.forms import LoginForm,RegistrationForm,ShowUserForm,MultiCheckboxField,ShowPollForm,ShowOptionForm,ShowResponseForm
 from flask_login import current_user,login_user,logout_user
 from app.models import User,Poll,Option,Behaviour
 from flask_login import login_required
@@ -12,11 +12,12 @@ from flask import url_for
 @app.route('/index')
 def index():
     polls = [p.poll_name for p in Poll.query.all()]
+    poll_id = [p.id for p in Poll.query.all()]
     poll_categories = [p.category for p in Poll.query.all()]
     user_preference=[]
     if current_user.is_authenticated:
         user_preference = current_user.preference.split(',')
-    return render_template("index.html",title='Home',polls=polls,user_preference=user_preference,poll_categories=poll_categories)
+    return render_template("index.html",title='Home',polls=polls,user_preference=user_preference,poll_categories=poll_categories,poll_id=poll_id)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -95,22 +96,68 @@ def delete_poll():
         return redirect(url_for('index'))
     return render_template('delete_poll.html',title='Delete Poll',poll_form=poll_form)
 
+@app.route('/delete_response',methods=['GET','POST'])
+def delete_response():
+    if (not current_user.administrator or current_user.is_anonymous):
+        return redirect(url_for('index'))
+    response_form = ShowResponseForm()
+    list_of_poll_id = [b.poll_id for b in Behaviour.query.all()]
+    list_of_user_id = [b.user_id for b in Behaviour.query.all()]
+    list_of_poll = []
+    list_of_user = []
+    list_of_response=[]
+    for poll_id in list_of_poll_id:
+        poll_name = db.session.query(Poll).filter_by(id=poll_id).first().poll_name
+        list_of_poll.append(poll_name)
+    for user_id in list_of_user_id:
+        user_name = db.session.query(User).filter_by(id=user_id).first().username
+        list_of_user.append(user_name)
+
+    for i in range(len(list_of_user)):
+        str = list_of_user[i] + ":" +list_of_poll[i]
+        list_of_response.append(str)
+
+    responses = [(x, x) for x in list_of_response]
+    response_form.example.choices = responses
+
+    if response_form.validate_on_submit():
+        for response_str in response_form.example.data:
+            user_name = response_str.split(':')[0]
+            poll_name = response_str.split(':')[1]
+            user_id = db.session.query(User).filter_by(username=user_name).first().id
+            poll_id = db.session.query(Poll).filter_by(poll_name=poll_name).first().id
+            db.session.query(Behaviour).filter_by(poll_id=poll_id,user_id=user_id).delete()
+            db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('delete_response.html',title='Delete Response',response_form=response_form)
+
 @app.route('/create_poll',methods=['GET', 'POST'])
 def create_poll():
     return render_template("create_poll.html",title='Create Poll')
 
 @app.route('/create_poll_submit',methods=['GET', 'POST'])
 def create_poll_submit():
+    print("hi")
     poll_name = request.values.get('poll_name')
     options = request.values.get('options')
     category = request.values.get('category')
+    print(poll_name)
+    print(options)
+    print(category)
     #validation part
     categories = ['Romantic Movie','Horror Movie','Fiction Movie','Documentary Movie','Comedy Movie','Action Movie']
     if (poll_name=="" or len(options.split(','))<2 or len(options.split(','))>10  or category not in categories):
         return redirect(url_for('index'))
     # In case duplicate options
-    if(len(options)!=len(list(dict.fromkeys(options)))):
+
+    options = options.split(',')
+    print(len(options))
+    print(options)
+    print(list(set(options)))
+    if(len(options)!=len(list(set(options)))):
         return redirect(url_for('index'))
+
+
 
     if(db.session.query(Poll).filter_by(poll_name=poll_name).first()):
         return redirect(url_for('index'))
@@ -118,10 +165,37 @@ def create_poll_submit():
     db.session.add(poll)
     db.session.commit()
     poll_id = Poll.query.filter_by(poll_name=poll_name).first().id
-    options = options.split(',')
     for option in options:
         insert_option = Option(poll_id=poll_id,option=option)
         db.session.add(insert_option)
         db.session.commit()
 
     return redirect(url_for('index'))
+
+
+
+@app.route('/template/<id>', methods=['GET', 'POST'])
+def template(id):
+    if current_user.is_anonymous:
+        return redirect(url_for('login'))
+    option_form = ShowOptionForm()
+    poll_name = db.session.query(Poll).filter_by(id=id).first().poll_name
+    list_of_options = [o.option for o in Option.query.filter_by(poll_id=id)]
+    options = [(x, x) for x in list_of_options]
+    option_form.example.choices = options
+    behaviour_existance = db.session.query(Behaviour).filter_by(poll_id=id, user_id = current_user.id).first()
+
+    behaviour = False
+    if(behaviour_existance):
+        behaviour = True
+
+    if option_form.validate_on_submit():
+        if(behaviour==False):
+            option_object = Option.query.filter_by(option=option_form.example.data).first()
+            option_object.votes +=1
+            behaviour_object = Behaviour(poll_id=id,user_id=current_user.id)
+            db.session.add(behaviour_object)
+            db.session.commit()
+            return redirect(url_for('index'))
+
+    return render_template('template.html',title='Vote Here',option_form=option_form,behaviour=behaviour,poll_name=poll_name)

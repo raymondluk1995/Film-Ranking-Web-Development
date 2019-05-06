@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField,  SubmitField, SelectMultipleField,widgets
+from wtforms import StringField, PasswordField,  SubmitField, SelectMultipleField,widgets,RadioField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo,Length
-from app.models import User,Poll
+from app.models import User,Poll,Option,Behaviour
 from app import db
 from wtforms_sqlalchemy.fields import QuerySelectField
 
@@ -58,7 +58,41 @@ class ShowPollForm(FlaskForm):
     list_of_polls = [p.poll_name for p in Poll.query.all()]
     polls = [(x, x) for x in list_of_polls]
     example = MultiCheckboxField('Label', choices=polls)
-    submit = SubmitField('Delete User')
+    submit = SubmitField('Delete Form')
     def validate_example(self,example):
         if(len(self.example.data)<1):
             raise ValidationError('You are not deleting any poll!')
+
+class ShowOptionForm(FlaskForm):
+    list_of_options = [o.option for o in Option.query.all()]
+    options = [(x, x) for x in list_of_options]
+    example = RadioField('Label',choices=options)
+    submit = SubmitField('Submit Your Vote')
+
+    def validate_example(self,example):
+        if(self.example.data==""):
+            raise ValidationError('You are not voting any option!')
+
+class ShowResponseForm(FlaskForm):
+    list_of_poll_id = [b.poll_id for b in Behaviour.query.all()]
+    list_of_user_id = [b.user_id for b in Behaviour.query.all()]
+    list_of_poll = []
+    list_of_user = []
+    list_of_response=[]
+    for poll_id in list_of_poll_id:
+        poll_name = db.session.query(Poll).filter_by(id=poll_id).first().poll_name
+        list_of_poll.append(poll_name)
+    for user_id in list_of_user_id:
+        user_name = db.session.query(User).filter_by(id=user_id).first().username
+        list_of_user.append(user_name)
+
+    for i in range(len(list_of_user)):
+        str = list_of_user[i] + ":" +list_of_poll[i]
+        list_of_response.append(str)
+
+    responses = [(x, x) for x in list_of_response]
+    example = MultiCheckboxField('Label', choices=responses)
+    submit = SubmitField('Delete Response')
+    def validate_example(self,example):
+        if(len(self.example.data)<1):
+            raise ValidationError('You are not deleting any response!')

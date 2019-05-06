@@ -46,6 +46,7 @@ li{
   --darkBlue:rgb(37, 51, 70);
   --lightYellow: #fffbb1;
   --purple:rgb(156, 15, 146);
+  --yellow: rgb(241, 233, 40);
 }
 
 .button {
@@ -298,6 +299,14 @@ li.sd-right {
   width:100%;
 }
 
+.screen-center{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
 /* -------------registration tool ---------------*/
 .form-group ul{
   padding-left: 0;
@@ -457,6 +466,11 @@ li.sd-right {
 
 .lightBlue, .hover-lightBlue:hover {
   background-color: var(--lightBlue) !important;
+  color: var(--white);
+}
+
+.yellow,.hover-yellow:hover{
+  background-color: var(--yellow) !important;
   color: var(--white);
 }
 

@@ -6,33 +6,33 @@
 <!-- Form Part -->
 <div class="center-align login-content outer" id="register-part">
   <div class="container">
-    <header class="lv1title" id="deletePoll-lv1title"><b>Delete Poll</b></header>
+    <header class="lv1title"><b>Delete Response</b></header>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 form-box">
         <div class="form-top">
           <div class="form-top-left">
-            <h3>Delete Poll</h3>
-            <p>Please choose the polls you want to delete</p>
+            <h3>Delete Response</h3>
+            <p>The response format is USER : POLL TITLE</p>
           </div>
           <div class="form-top-right">
-            <i class="fas fa-eraser"></i>
+            <i class="fas fa-minus-circle"></i>
           </div>
         </div>
         <div class="form-bottom">
           <form role="form" action="" method="post" class="login-form">
             <div class="form-group">
-              {{poll_form.hidden_tag()}}
+              {{response_form.hidden_tag()}}
 
-            <label>These are the polls in the database</label>
+            <label>These are the responses in the database</label>
             <div class="form-group">
-              {{poll_form.example}}
-              {% for error in poll_form.example.errors %}
+              {{response_form.example}}
+              {% for error in response_form.example.errors %}
               <span class="alert">[{{ error }}]</span>
               {% endfor %}
 
             </div>
 
-            {{poll_form.submit(size=32,class_="button purple submit_btn hover-text-lightgrey")}}
+            {{response_form.submit(size=32,class_="button green submit_btn hover-text-lightgrey")}}
           </form>
         </div>
       </div>

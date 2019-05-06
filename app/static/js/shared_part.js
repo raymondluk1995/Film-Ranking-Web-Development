@@ -129,7 +129,9 @@ function hasDuplicates(array) {
 
 
 function create_movie_poll(){
+  console.log("function starts");
   var poll_name = $("#poll_name").val();
+  console.log("Poll name here");
   var options = document.getElementsByClassName('poll-option');
   var category = $("#category").val();
   var options_list =[];
@@ -162,7 +164,7 @@ function create_movie_poll(){
     return;
   }
   var options_string = options_list.join(',');
-
+  console.log("Before ajax sending");
   $.ajax({
     data : {
       poll_name : poll_name,
