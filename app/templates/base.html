@@ -47,8 +47,8 @@
   {% if current_user.is_authenticated %}
   {% if current_user.administrator %}
   <div class="sd-middle margin-top-40">
-      <a href="" class="button lightBlue hover-text-lightgrey padding-center">Create Poll</a>
-      <a href="" class="button lightYellow hover-text-lightgrey padding-center">Delete Poll</a>
+      <a href="{{url_for('create_poll')}}" class="button lightBlue hover-text-lightgrey padding-center">Create Poll</a>
+      <a href="{{url_for('delete_poll')}}" class="button purple hover-text-lightgrey padding-center">Delete Poll</a>
       <a href="{{url_for('delete_user')}}" class="button lightred hover-text-lightgrey padding-center">Delete User</a>
       <a href="" class="button green hover-text-lightgrey padding-center">Delete Response</a>
   </div>

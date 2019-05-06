@@ -104,13 +104,67 @@ function finish_register(){
 
 }
 
-// function display(){
-//   var poll_name = document.getElementById('poll_name').value;
-//   var options = document.getElementsByClassName('poll-option');
-//   var category = document.getElementById('category').value;
-//   console.log(poll_name);
-//   var options_list =[];
-//   for (var i=0; i<options.length;i++){
-//     options_list.push(options[i].value);
-//   }
-// }
+// -------------The Part Cannot Be Removed----------------------
+$(document).ready(function() {
+    $("#Add").on("click", function() {
+        $("#textboxDiv").append("<div><br>New Option :<input class='poll-option form-control' type='text' placeholder='New Option'/></div>");
+    });
+    $("#Remove").on("click", function() {
+        $("#textboxDiv").children().last().remove();
+    });
+
+});
+
+
+function create_movie_poll(){
+  var poll_name = $("#poll_name").val();
+  var options = document.getElementsByClassName('poll-option');
+  var category = $("#category").val();
+  var options_list =[];
+  for (var i=0; i<options.length;i++){
+    options_list.push(options[i].value);
+  }
+
+  if(poll_name==""){
+    alert("The poll name is empty!");
+    return;
+  }
+
+  if(options.length<2 ){
+    alert("The options are less than 2");
+    return;
+  }
+
+  if(options.length>10){
+    alert("The options are more than 10");
+    return;
+  }
+
+  if(category==""){
+    alert("The category is empty");
+    return;
+  }
+  var options_string = options_list.join(',');
+
+  $.ajax({
+    data : {
+      poll_name : poll_name,
+      options: options_string,
+      category:category
+    },
+    type : 'POST',
+    url : '/create_poll_submit'
+  })
+  .done(function(data) {
+
+    if (data.error) {
+      $('#errorAlert').text(data.error).show();
+    }
+    else{
+      console.log("Success");
+      window.location = "/index";
+    }
+  });
+
+  event.preventDefault();
+}

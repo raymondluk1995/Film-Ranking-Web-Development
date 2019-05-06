@@ -45,6 +45,7 @@ li{
   --darkRed: rgb(110, 25, 63);
   --darkBlue:rgb(37, 51, 70);
   --lightYellow: #fffbb1;
+  --purple:rgb(156, 15, 146);
 }
 
 .button {
@@ -297,13 +298,22 @@ li.sd-right {
 }
 
 /* -------------registration tool ---------------*/
+.form-group ul{
+  padding-left: 0;
+}
 
+
+/* -------------lv1title tool ---------------*/
 #reg-lv1title{
   border-bottom: 8px solid var(--lightRed);
 }
 
-.form-group ul{
-  padding-left: 0;
+#new-poll-lv1title{
+  border-bottom: 8px solid var(--lightBlue);
+}
+
+#deletePoll-lv1title{
+  border-bottom: 8px solid var(--purple);
 }
 
 /* -------------footer tool ---------------*/
@@ -420,6 +430,11 @@ li.sd-right {
   color:var(--white);
 }
 
+.purple,.hover-purple:hover{
+  background-color: var(--purple);
+  color:var(--white);
+}
+
 .lightred, .hover-lightred:hover {
   background-color: var(--lightRed);
   color: var(--white);
@@ -427,12 +442,12 @@ li.sd-right {
 
 .lightYellow, .hover-lightYellow:hover {
   background-color: var(--lightYellow) !important;
-  color: #000 !important;
+  color: var(--white);
 }
 
 .lightBlue, .hover-lightBlue:hover {
   background-color: var(--lightBlue) !important;
-  color: #000 !important;
+  color: var(--white);
 }
 
 /* ----------font-size tool----------- */

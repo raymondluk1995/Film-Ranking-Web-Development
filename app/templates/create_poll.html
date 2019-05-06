@@ -4,7 +4,7 @@
 
   <!-- Add movies Part -->
   <div class="center-align login-content">
-    <header class="lv1title" id="reg-lv1title"><b>New Poll</b></header>
+    <header class="lv1title" id="new-poll-lv1title"><b>New Poll</b></header>
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 form-box">
@@ -24,25 +24,25 @@
               <input type="text" id="poll_name" placeholder="Poll name..." class="form-control">
             </div>
 
-            <button id="Add"<strong>Click to add movie</strong></button> <button id="Remove">Click to remove movie</button>
-            <br><br>New Movie :<input class='poll-option form-control' type='text' placeholder='New Option'/>
+            <button id="Add"<strong>Click to add an option</strong></button> <button id="Remove">Click to remove an option</button>
+            <br><br>New Option :<input class='poll-option form-control' type='text' placeholder='New Option'/>
             <div id="textboxDiv">
             </div>
 
 
             <br />Movie catergory:
              <select name="catergories" id="category">
-               <option value="Romantic">Romantic</option>
-               <option value="Horror">Horror</option>
-               <option value="Fiction">Fiction</option>
-               <option value="Documentary">Documentary</option>
-               <option value="Comedy">Comedy</option>
-               <option value="Action">Action</option>
+               <option value="Romantic Movie">Romantic</option>
+               <option value="Horror Movie">Horror</option>
+               <option value="Fiction Movie">Fiction</option>
+               <option value="Documentary Movie">Documentary</option>
+               <option value="Comedy Movie">Comedy</option>
+               <option value="Action Movie">Action</option>
              </select>
 
                 <!-- </div> -->
               <br>
-              <a id="submit_btn" type="submit" class="button lightred full-width hover-text-lightgrey"><i class="fas fa-pencil-alt margin-right-8"></i>Submit Now!</a>
+              <a id="submit_btn" onclick="create_movie_poll()" type="submit" class="button lightBlue full-width hover-text-lightgrey"><i class="fas fa-pencil-alt margin-right-8"></i>Submit Now!</a>
             	<div id="errorAlert" class="alert alert-danger non-display" role="alert" ></div>
           </div>
         </div>
@@ -50,50 +50,5 @@
     </div>
 
   </div>
-
-  <script>
-      $(document).ready(function() {
-          $("#Add").on("click", function() {
-              $("#textboxDiv").append("<div><br>New Movie :<input class='poll-option form-control' type='text' placeholder='New Option'/></div>");
-          });
-          $("#Remove").on("click", function() {
-              $("#textboxDiv").children().last().remove();
-          });
-
-          $("#submit_btn").on("click",function(event){
-            var poll_name = $("#poll_name").val();
-            var options = document.getElementsByClassName('poll-option');
-            var category = $("#category").val();
-            var options_list =[];
-            for (var i=0; i<options.length;i++){
-              options_list.push(options[i].value);
-            }
-            var options_string = options_list.join(',');
-            console.log(options_string);
-
-            $.ajax({
-        			data : {
-        				poll_name : poll_name,
-        				options: options_string,
-                category:category
-        			},
-        			type : 'POST',
-        			url : '/create_poll_submit'
-        		})
-        		.done(function(data) {
-
-        			if (data.error) {
-        				$('#errorAlert').text(data.error).show();
-        			}
-              else{
-                console.log("Success");
-              }
-        		});
-
-        		event.preventDefault();
-          })
-      });
-  </script>
-
 
   {% endblock %}
