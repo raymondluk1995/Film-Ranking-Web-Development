@@ -115,6 +115,18 @@ $(document).ready(function() {
 
 });
 
+function hasDuplicates(array) {
+    var valuesSoFar = Object.create(null);
+    for (var i = 0; i < array.length; ++i) {
+        var value = array[i];
+        if (value in valuesSoFar) {
+            return true;
+        }
+        valuesSoFar[value] = true;
+    }
+    return false;
+}
+
 
 function create_movie_poll(){
   var poll_name = $("#poll_name").val();
@@ -137,6 +149,11 @@ function create_movie_poll(){
 
   if(options.length>10){
     alert("The options are more than 10");
+    return;
+  }
+
+  if(hasDuplicates(options_list)){
+    alert("Duplicate options exist");
     return;
   }
 

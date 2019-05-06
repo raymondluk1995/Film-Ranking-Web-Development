@@ -71,5 +71,45 @@
       </div>
     </div>
 
+    {% if current_user.administrator==1 or current_user.is_anonymous %}
+      <br /><br /><br /><header class="lv1title sd-middle" id="allPoll-lv1title"><b>All Polls</b></header>
+      <div class="content">
+        {% for poll in polls %}
+          <div class="sd-middle">
+            <a href="{{url_for('create_poll')}}" class="button lightBlue hover-text-lightgrey padding-center width-500">{{poll}}</a>
+          </div>
+          <br /><br /><br /><br />
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <!-- recommendation part -->
+      <br /><br /><br /><header class="lv1title sd-middle"><b>Recommended Polls</b></header>
+      <div class="content">
+        {% for i in range(polls|length) %}
+          {% if poll_categories[i] in user_preference %}
+          <div class="sd-middle">
+            <a href="{{url_for('create_poll')}}" class="button green hover-text-lightgrey padding-center width-500">{{polls[i]}}</a>
+          </div>
+          <br /><br /><br /><br />
+          {% endif %}
+        {% endfor %}
+      <!-- Maybe You Like Part -->
+      <br /><br /><br /><header class="lv1title sd-middle" id="maybeYouLike-lv1title"><b>Maybe You Like</b></header>
+      <div class="content">
+        {% for i in range(polls|length) %}
+          {% if poll_categories[i] not in user_preference %}
+          <div class="sd-middle">
+            <a href="{{url_for('create_poll')}}" class="button lightred hover-text-lightgrey padding-center width-500">{{polls[i]}}</a>
+          </div>
+          <br /><br /><br /><br />
+          {% endif %}
+        {% endfor %}
+
+    {% endif %}
+    </div>
   </div>
+
+
+
 {% endblock %}

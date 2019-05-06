@@ -97,6 +97,7 @@ li{
 
 .sd-right{
   right:0;
+  cursor:pointer;
 }
 
 .sd-right-8{
@@ -304,7 +305,7 @@ li.sd-right {
 
 
 /* -------------lv1title tool ---------------*/
-#reg-lv1title{
+#reg-lv1title,#maybeYouLike-lv1title{
   border-bottom: 8px solid var(--lightRed);
 }
 
@@ -312,9 +313,18 @@ li.sd-right {
   border-bottom: 8px solid var(--lightBlue);
 }
 
+#allPoll-lv1title{
+  border-bottom: 8px solid var(--lightBlue);
+}
+
+
 #deletePoll-lv1title{
   border-bottom: 8px solid var(--purple);
 }
+
+
+
+
 
 /* -------------footer tool ---------------*/
 .padding-footer {
@@ -612,6 +622,10 @@ li.sd-right {
   padding:0 auto;
 }
 
+.width-500{
+  width:500px;
+}
+
 
 /* -----------text-alignment tool -----------*/
 .center-align{
@@ -620,4 +634,9 @@ li.sd-right {
 
 .right-align{
   text-align: right;
+}
+
+/* -----------micellaneous------------------- */
+.font-black{
+  color:#000;
 }

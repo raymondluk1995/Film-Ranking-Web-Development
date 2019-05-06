@@ -11,7 +11,12 @@ from flask import url_for
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html",title='Home')
+    polls = [p.poll_name for p in Poll.query.all()]
+    poll_categories = [p.category for p in Poll.query.all()]
+    user_preference=[]
+    if current_user.is_authenticated:
+        user_preference = current_user.preference.split(',')
+    return render_template("index.html",title='Home',polls=polls,user_preference=user_preference,poll_categories=poll_categories)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -99,12 +104,15 @@ def create_poll_submit():
     poll_name = request.values.get('poll_name')
     options = request.values.get('options')
     category = request.values.get('category')
-    print(poll_name)
-    print(options)
-    print(category)
     #validation part
     categories = ['Romantic Movie','Horror Movie','Fiction Movie','Documentary Movie','Comedy Movie','Action Movie']
     if (poll_name=="" or len(options.split(','))<2 or len(options.split(','))>10  or category not in categories):
+        return redirect(url_for('index'))
+    # In case duplicate options
+    if(len(options)!=len(list(dict.fromkeys(options)))):
+        return redirect(url_for('index'))
+
+    if(db.session.query(Poll).filter_by(poll_name=poll_name).first()):
         return redirect(url_for('index'))
     poll = Poll(poll_name=poll_name,category=category)
     db.session.add(poll)
