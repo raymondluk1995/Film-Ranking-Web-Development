@@ -43,4 +43,17 @@
   </div>
 </div>
 
+<!-- Plotting Part -->
+<div class="content canvas">
+  <canvas id="bar-chart"></canvas>
+</div>
+
+<script type="text/javascript">
+  var label = '{{labels}}'.split(',');
+  var values = '{{values}}'.split(',');
+  for (i=0;i<values.length;i++){
+    values[i] = parseInt(values[i]);
+  }
+  var title = '{{poll_name}}';
+</script>
 {% endblock %}

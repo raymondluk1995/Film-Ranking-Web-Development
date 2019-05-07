@@ -24,6 +24,45 @@ $(document).ready(function() {
     var time_str = '<p class="font-8">Created by <a href="https://www.facebook.com/profile.php?id=100017465704093" class="text-lightgrey" target="_blank">Minrui Lu</a> and <a class="text-lightgrey" href="https://www.facebook.com/sub1433">Wenjing Zheng</a>' +'<span>&nbsp&nbsp&nbsp&nbspLast Modified Date Was: </span>'+ time +'</p>'
     $("footer").append(time_str);
 
+    $(document).ready(function() {
+        ctx = document.getElementById("bar-chart");
+
+        ctx.style.backgroundColor="#fff";
+
+        new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+          labels: label,
+          datasets: [
+            {
+              label: label,
+              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+              data: values
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: title
+          },
+          scales: {
+                yAxes : [{
+                    ticks : {
+                        
+                        min : 0
+                    }
+                }]
+            }
+
+        }
+    });
+
+    });
+
+
 });
 
 function hasDuplicates(array) {

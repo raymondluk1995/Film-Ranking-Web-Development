@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect,request
+from flask import render_template, flash, redirect,request,json
 from app import app,db
 from app.forms import LoginForm,RegistrationForm,ShowUserForm,MultiCheckboxField,ShowPollForm,ShowOptionForm,ShowResponseForm
 from flask_login import current_user,login_user,logout_user,login_required
@@ -184,7 +184,12 @@ def template(id):
     option_form = ShowOptionForm()
     poll_name = db.session.query(Poll).filter_by(id=id).first().poll_name
     list_of_options = [o.option for o in Option.query.filter_by(poll_id=id)]
+    list_of_votes = [o.votes for o in Option.query.filter_by(poll_id=id)]
+    options_str = (",").join(list_of_options)
+    votes_str = ','.join(str(v) for v in list_of_votes)
+
     options = [(x, x) for x in list_of_options]
+
     option_form.example.choices = options
     behaviour_existance = db.session.query(Behaviour).filter_by(poll_id=id, user_id = current_user.id).first()
 
@@ -201,4 +206,4 @@ def template(id):
             db.session.commit()
             return redirect(url_for('index'))
 
-    return render_template('template.html',title='Vote Here',option_form=option_form,behaviour=behaviour,poll_name=poll_name)
+    return render_template('template.html',title='Vote Here',labels=options_str,values=votes_str,option_form=option_form,behaviour=behaviour,poll_name=poll_name)

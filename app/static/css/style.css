@@ -488,6 +488,12 @@ li.sd-right {
 }
 
 
+/* ----------canvas tool----------- */
+.canvas{
+  width:60%;
+  height:50%;
+}
+
 /* ----------space tool ---------------*/
 .margin-right{
   margin-right:18px;
