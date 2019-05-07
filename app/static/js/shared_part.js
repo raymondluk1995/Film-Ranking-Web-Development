@@ -37,7 +37,7 @@ $(document).ready(function() {
           datasets: [
             {
               label: label,
-              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+              backgroundColor: ["rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)","rgba(240, 87, 207, 0.82)","rgba(247, 135, 239, 0.82)","rgba(238, 52, 86, 0.82)", "rgba(74, 185, 240, 0.82)","rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)"],
               data: values
             }
           ]
@@ -51,7 +51,7 @@ $(document).ready(function() {
           scales: {
                 yAxes : [{
                     ticks : {
-                        
+
                         min : 0
                     }
                 }]
