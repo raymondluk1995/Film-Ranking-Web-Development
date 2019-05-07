@@ -1,8 +1,10 @@
 {% extends "base.html"%}
 
 {% block content %}
+
+  {% if current_user.administrator %}
   <!-- carousel part -->
-  <div class="content">
+  <div class="content" id="carousel-content">
     <div class="carousel-box">
 
       <div class="carousel">
@@ -70,6 +72,76 @@
         </div>
       </div>
     </div>
+    {% else %}
+    <div class="content" id="content">
+      <div class="carousel-box">
+
+        <div class="carousel">
+          <img src="/static/img/romantic.jpg" alt="romantic">
+          <div class="left-top">
+            <span class="carousel-tag animate-bottom"><a href="https://www.youtube.com/results?search_query=romantic+movie" target="_blank">Romantic Movies</a></span>
+          </div>
+        </div>
+
+        <div class="carousel non-display">
+          <img src="/static/img/horror.jpg" alt="horror">
+          <div class="left-top">
+            <span class="carousel-tag animate-bottom"><a href="https://www.youtube.com/results?search_query=horror+movie" target="_blank">Horror Movies</a></span>
+          </div>
+        </div>
+
+        <div class="carousel non-display">
+          <img src="/static/img/fiction.jpg" alt="fiction">
+          <div class="left-top">
+            <span class="carousel-tag animate-bottom"><a href="https://www.youtube.com/results?search_query=fiction+movie" target="_blank">Fiction Movies</a></span>
+          </div>
+        </div>
+
+        <div class="carousel non-display">
+          <img src="/static/img/documentary.jpg" alt="documentary">
+          <div class="left-top">
+            <span class="carousel-tag animate-bottom"><a href="https://www.youtube.com/results?search_query=documentary+movies" target="_blank">Documentary Movies</a></span>
+          </div>
+        </div>
+
+        <div class="carousel non-display">
+          <img  src="/static/img/comedy.jpg" alt="comedy">
+          <div class="left-top">
+            <span class="carousel-tag animate-bottom"><a href="https://www.youtube.com/results?search_query=comedy+movies" target="_blank">Comedy Movies</a></span>
+          </div>
+        </div>
+
+        <div class="carousel non-display">
+          <img  src="/static/img/action.jpg" alt="action">
+          <div class="left-top">
+            <span class="carousel-tag animate-bottom"><a href="https://www.youtube.com/results?search_query=action+movies" target="_blank">Action Movies</a></span>
+          </div>
+        </div>
+
+        <div class="tool-bar">
+          <div class="sd-row">
+            <div class="sd-col l1">
+              <span  onclick="page(-1)" class="carousel-btn "><i class="fas fa-chevron-circle-left margin-left-28"></i></span>
+            </div>
+            <div class="sd-col l10">
+              <div class="center-align">
+                <span class="dots active" onclick="slide(1)"></span>
+                <span class="dots" onclick="slide(2)"></span>
+                <span class="dots" onclick="slide(3)"></span>
+                <span class="dots" onclick="slide(4)"></span>
+                <span class="dots" onclick="slide(5)"></span>
+                <span class="dots" onclick="slide(6)"></span>
+              </div>
+            </div>
+            <div class="sd-col l1">
+              <div class="right-align">
+                <span onclick="page(1)" class="carousel-btn "><i class="fas fa-chevron-circle-right margin-right-28"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
 
     {% if current_user.administrator==1 or current_user.is_anonymous %}
       <br /><br /><br /><header class="lv1title sd-middle" id="allPoll-lv1title"><b>All Polls</b></header>
@@ -77,7 +149,7 @@
         {% for i in range(polls|length) %}
           {% set id =poll_id[i] %}
           <div class="sd-middle">
-            <a href="{{url_for('template',id=id)}}" class="button lightBlue hover-text-lightgrey padding-center width-500">{{polls[i]}}</a>
+            <a href="{{url_for('template',id=id)}}" class="button lightBlue hover-text-lightgrey padding-center width-500 font-8">{{polls[i]}}</a>
           </div>
           <br /><br /><br /><br />
         {% endfor %}
@@ -91,7 +163,7 @@
           {% set id =poll_id[i] %}
           {% if poll_categories[i] in user_preference %}
           <div class="sd-middle">
-            <a href="{{url_for('template',id=id)}}" class="button green hover-text-lightgrey padding-center width-500">{{polls[i]}}</a>
+            <a href="{{url_for('template',id=id)}}" class="button green hover-text-lightgrey padding-center width-500  font-8">{{polls[i]}}</a>
           </div>
           <br /><br /><br /><br />
           {% endif %}
@@ -103,7 +175,7 @@
           {% set id =poll_id[i] %}
           {% if poll_categories[i] not in user_preference %}
           <div class="sd-middle">
-            <a href="{{url_for('template',id=id)}}" class="button lightred hover-text-lightgrey padding-center width-500">{{polls[i]}}</a>
+            <a href="{{url_for('template',id=id)}}" class="button lightred hover-text-lightgrey padding-center width-500 font-8">{{polls[i]}}</a>
           </div>
           <br /><br /><br /><br />
           {% endif %}

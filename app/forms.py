@@ -58,7 +58,7 @@ class ShowPollForm(FlaskForm):
     list_of_polls = [p.poll_name for p in Poll.query.all()]
     polls = [(x, x) for x in list_of_polls]
     example = MultiCheckboxField('Label', choices=polls)
-    submit = SubmitField('Delete Form')
+    submit = SubmitField('Delete Poll')
     def validate_example(self,example):
         if(len(self.example.data)<1):
             raise ValidationError('You are not deleting any poll!')

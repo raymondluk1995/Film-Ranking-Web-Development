@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect,request
 from app import app,db
 from app.forms import LoginForm,RegistrationForm,ShowUserForm,MultiCheckboxField,ShowPollForm,ShowOptionForm,ShowResponseForm
-from flask_login import current_user,login_user,logout_user
+from flask_login import current_user,login_user,logout_user,login_required
 from app.models import User,Poll,Option,Behaviour
 from flask_login import login_required
 from werkzeug.urls import url_parse
@@ -22,8 +22,6 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # username = request.form.get('form-username')
-    # password = request.form.get('form-password')
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
@@ -33,7 +31,11 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user)
-        return redirect(url_for('index'))
+        next_page = request.args.get('next')
+        print("next page is ",next_page)
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/logout')
@@ -175,6 +177,7 @@ def create_poll_submit():
 
 
 @app.route('/template/<id>', methods=['GET', 'POST'])
+@login_required
 def template(id):
     if current_user.is_anonymous:
         return redirect(url_for('login'))

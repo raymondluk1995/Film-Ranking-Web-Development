@@ -10,6 +10,7 @@
   <link rel="stylesheet" href = "{{url_for('static',filename='assets/bootstrap/css/bootstrap.min.css')}}" >
   <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <link rel="stylesheet" href = "{{url_for('static',filename='css/style.css')}}" >
 </head>
 
@@ -19,7 +20,7 @@
 
     <ul class="sd-nav black sd-nav-h col">
       <li class="l2 s1"><a href="{{url_for('index')}}" class="text-lightgrey large hover-lightgrey"><i class="fas fa-poll margin-right"></i><span class="hide-medium hide-small">Movie Polls</span></a></li>
-      <li class="nav-title l8 s1 hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">Get Movie Polls Here!</span></a></li>
+      <li class="nav-title l8 s1  hide-small"><a class="text-lightgrey large" id="nav-title-a"><span class="title-font">Get Movie Polls Here!</span></a></li>
       {% if current_user.is_anonymous %}
       <li class="sd-right"><a href="{{url_for('login')}}" class="text-lightgrey large hover-lightgrey "><i class="fa fa-user" id="nav-user"></i></a></li>
       {% else %}
@@ -46,7 +47,7 @@
   <!-- buttons for admin -->
   {% if current_user.is_authenticated %}
   {% if current_user.administrator %}
-  <div class="sd-middle margin-top-40">
+  <div class="sd-div-middle margin-top-40">
       <a href="{{url_for('create_poll')}}" class="button lightBlue hover-text-lightgrey padding-center">Create Poll</a>
       <a href="{{url_for('delete_poll')}}" class="button purple hover-text-lightgrey padding-center">Delete Poll</a>
       <a href="{{url_for('delete_user')}}" class="button lightred hover-text-lightgrey padding-center">Delete User</a>
@@ -61,11 +62,11 @@
 
   <!-- footer part -->
   <footer class="black sd-bottom sd-left center-align padding-footer">
-    <p>Created by <a href="https://www.facebook.com/profile.php?id=100017465704093" class="text-lightgrey" target="_blank">Minrui Lu</a> and <a class="text-lightgrey" href="https://www.facebook.com/sub1433">Wenjing Zheng</a></p>
+
   </footer>
 
-  <script src="static/js/carousel.js" charset="utf-8"></script>
-  <script src="static/js/shared_part.js" charset="utf-8"></script>
+  <script src="../static/js/carousel.js" charset="utf-8"></script>
+  <script src="../static/js/shared_part.js" charset="utf-8"></script>
 
 </body>
 
