@@ -46,7 +46,8 @@ $(document).ready(function() {
           legend: { display: false },
           title: {
             display: true,
-            text: title
+            text: title,
+            fontSize:20
           },
           scales: {
                 yAxes : [{
@@ -84,6 +85,8 @@ function create_movie_poll(){
   console.log("Poll name here");
   var options = document.getElementsByClassName('poll-option');
   var category = $("#category").val();
+  var description = $("#poll_description").val();
+  console.log("The description is ",description);
   var options_list =[];
   for (var i=0; i<options.length;i++){
     options_list.push(options[i].value);
@@ -91,6 +94,11 @@ function create_movie_poll(){
 
   if(poll_name==""){
     alert("The poll name is empty!");
+    return;
+  }
+
+  if(description.length>200){
+    alert("The description's length is too long!");
     return;
   }
 
@@ -119,7 +127,8 @@ function create_movie_poll(){
     data : {
       poll_name : poll_name,
       options: options_string,
-      category:category
+      category:category,
+      description:description
     },
     type : 'POST',
     url : '/create_poll_submit'

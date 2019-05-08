@@ -105,6 +105,7 @@ def delete_response():
     response_form = ShowResponseForm()
     list_of_poll_id = [b.poll_id for b in Behaviour.query.all()]
     list_of_user_id = [b.user_id for b in Behaviour.query.all()]
+    list_of_options = [b.option for b in Behaviour.query.all()]
     list_of_poll = []
     list_of_user = []
     list_of_response=[]
@@ -116,7 +117,7 @@ def delete_response():
         list_of_user.append(user_name)
 
     for i in range(len(list_of_user)):
-        str = list_of_user[i] + ":" +list_of_poll[i]
+        str = list_of_user[i] + ":" +list_of_poll[i] + ":" + list_of_options[i]
         list_of_response.append(str)
 
     responses = [(x, x) for x in list_of_response]
@@ -143,12 +144,14 @@ def create_poll_submit():
     poll_name = request.values.get('poll_name')
     options = request.values.get('options')
     category = request.values.get('category')
+    description = request.values.get('description')
     print(poll_name)
     print(options)
     print(category)
+    print(description)
     #validation part
     categories = ['Romantic Movie','Horror Movie','Fiction Movie','Documentary Movie','Comedy Movie','Action Movie']
-    if (poll_name=="" or len(options.split(','))<2 or len(options.split(','))>10  or category not in categories):
+    if (poll_name=="" or len(options.split(','))<2 or len(options.split(','))>10 or len(description)>200 or category not in categories):
         return redirect(url_for('index'))
     # In case duplicate options
 
@@ -163,7 +166,8 @@ def create_poll_submit():
 
     if(db.session.query(Poll).filter_by(poll_name=poll_name).first()):
         return redirect(url_for('index'))
-    poll = Poll(poll_name=poll_name,category=category)
+    print("Before submit, the description is ",description)
+    poll = Poll(poll_name=poll_name,category=category,description=description)
     db.session.add(poll)
     db.session.commit()
     poll_id = Poll.query.filter_by(poll_name=poll_name).first().id
@@ -183,6 +187,7 @@ def template(id):
         return redirect(url_for('login'))
     option_form = ShowOptionForm()
     poll_name = db.session.query(Poll).filter_by(id=id).first().poll_name
+    description = db.session.query(Poll).filter_by(id=id).first().description
     list_of_options = [o.option for o in Option.query.filter_by(poll_id=id)]
     list_of_votes = [o.votes for o in Option.query.filter_by(poll_id=id)]
     options_str = (",").join(list_of_options)
@@ -201,9 +206,9 @@ def template(id):
         if(behaviour==False):
             option_object = Option.query.filter_by(option=option_form.example.data).first()
             option_object.votes +=1
-            behaviour_object = Behaviour(poll_id=id,user_id=current_user.id)
+            behaviour_object = Behaviour(poll_id=id,user_id=current_user.id,option=option_form.example.data)
             db.session.add(behaviour_object)
             db.session.commit()
             return redirect(url_for('index'))
 
-    return render_template('template.html',title='Vote Here',labels=options_str,values=votes_str,option_form=option_form,behaviour=behaviour,poll_name=poll_name)
+    return render_template('template.html',title='Vote Here',description=description,labels=options_str,values=votes_str,option_form=option_form,behaviour=behaviour,poll_name=poll_name)
