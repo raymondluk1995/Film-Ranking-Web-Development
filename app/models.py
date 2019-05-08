@@ -27,6 +27,7 @@ class Poll(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     poll_name = db.Column(db.String(64),index=True,unique=True)
     category = db.Column(db.String(20),index=True)
+    description = option = db.Column(db.String(200))
 
 
     def __repr__(self):
@@ -35,10 +36,11 @@ class Poll(db.Model):
 class Option(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     poll_id = db.Column(db.Integer,db.ForeignKey('poll.id'))
-    option = db.Column(db.String(50),index=True)
+    option = db.Column(db.String(50))
     votes = db.Column(db.Integer,default=0)
 
 class Behaviour(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     poll_id = db.Column(db.Integer,db.ForeignKey('poll.id'),index=True)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),index=True)
+    option = db.Column(db.String(50))
