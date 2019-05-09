@@ -55,5 +55,23 @@
     values[i] = parseInt(values[i]);
   }
   var title = '{{poll_name}}';
+  // Sort the arrays
+  var combine = [];
+  for (var i=0;i<label.length;i++){
+    var ele = [];
+    ele.push(label[i]);
+    ele.push(values[i]);
+    combine.push(ele);
+  }
+
+  combine.sort(function(a, b){return b[1]-a[1]});
+
+  label = [];
+  values=[];
+
+  for (i=0;i<combine.length;i++){
+    label.push(combine[i][0]);
+    values.push(combine[i][1]);
+  }
 </script>
 {% endblock %}
