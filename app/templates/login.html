@@ -37,6 +37,11 @@
                 <span class="alert">[{{ error }}]</span>
                 {% endfor %}
               </div>
+              
+              <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+              </div>
               <!-- <button type="button" class="button green"><i class="fas fa-sign-in-alt margin-right-8" id="sign-in-btn"></i>Sign In!</button> -->
               {{form.submit(size=32,class_="button green submit_btn hover-text-lightgrey")}}
             </form>
