@@ -12,7 +12,7 @@
         <div class="form-top">
           <div class="form-top-left">
             <h3>Vote Here!</h3>
-            <p>{{description}}</p>
+            <p>The poll is a single choice voting</p>
           </div>
           <div class="form-top-right">
             <i class="fas fa-vote-yea"></i>
@@ -46,6 +46,8 @@
 <!-- Plotting Part -->
 <div class="content canvas">
   <canvas id="bar-chart"></canvas>
+  <br />
+  <canvas id="pieChart" width="800" height="450"></canvas>
 </div>
 
 <script type="text/javascript">
@@ -55,7 +57,7 @@
     values[i] = parseInt(values[i]);
   }
   var title = '{{poll_name}}';
-  // Sort the arrays
+
   var combine = [];
   for (var i=0;i<label.length;i++){
     var ele = [];
@@ -69,9 +71,11 @@
   label = [];
   values=[];
 
+
   for (i=0;i<combine.length;i++){
     label.push(combine[i][0]);
     values.push(combine[i][1]);
   }
+  var max_value = values[0];
 </script>
 {% endblock %}

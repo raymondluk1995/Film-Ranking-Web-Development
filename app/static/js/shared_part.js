@@ -24,46 +24,193 @@ $(document).ready(function() {
     var time_str = '<p class="font-8">Created by <a href="https://www.facebook.com/profile.php?id=100017465704093" class="text-lightgrey" target="_blank">Minrui Lu</a> and <a class="text-lightgrey" href="https://www.facebook.com/sub1433">Wenjing Zheng</a>' +'<span>&nbsp&nbsp&nbsp&nbspLast Modified Date Was: </span>'+ time +'</p>'
     $("footer").append(time_str);
 
-    $(document).ready(function() {
-        ctx = document.getElementById("bar-chart");
+    // Part for doughnut chart
+    var total =0;
+    for (var i=0;i<values.length;i++){
+      total += values[i];
+    }
 
-        ctx.style.backgroundColor="#fff";
+    var pie_values = [];
 
-        new Chart(ctx, {
-        type: 'bar',
+    for(i =0;i<values.length;i++){
+      pie_values.push(Math.round(values[i]/total * 100));
+    }
+    var canvas = document.getElementById("pieChart");
+    ctx2 = canvas.getContext('2d');
+    canvas.style.backgroundColor="#fff";
 
-        data: {
-          labels: label,
-          datasets: [
-            {
-              label: label,
-              backgroundColor: ["rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)","rgba(240, 87, 207, 0.82)","rgba(247, 135, 239, 0.82)","rgba(238, 52, 86, 0.82)", "rgba(74, 185, 240, 0.82)","rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)"],
-              data: values
+    Chart.defaults.global.defaultFontColor = 'black';
+    Chart.defaults.global.defaultFontSize = 16;
+    var theHelp = Chart.helpers;
+
+    var data = {
+      labels: label,
+      datasets: [{
+        fill: true,
+        backgroundColor: ["rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)","rgba(240, 87, 207, 0.82)","rgba(247, 135, 239, 0.82)","rgba(238, 52, 86, 0.82)", "rgba(74, 185, 240, 0.82)","rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)"],
+        data: pie_values
+      }]
+    };
+
+    var options = {
+      title: {
+        display: true,
+        text: title,
+        position: 'top'
+      },
+      rotation: -0.7 * Math.PI,
+      hover: {
+        animationDuration: 0
+      },
+      animation: {
+        onComplete: function () {
+          // var chartInstance = this.chart;
+          var chartInstance = this;
+          var ctx = chartInstance.chart.ctx;
+          chartInstance.data.datasets.forEach(function(dataset, i) {
+            var meta = chartInstance.getDatasetMeta(i);
+            if (!meta.hidden) {
+              meta.data.forEach(function(element, index) {
+                // Draw the text in black, with the specified font
+                ctx.fillStyle = 'black';
+                var fontSize = 16;
+                var fontStyle = 'normal';
+                var fontFamily = 'Helvetica Neue';
+                ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+                // Just naively convert to string for now
+                var dataString = dataset.data[index].toString();
+                // Make sure alignment settings are correct
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                var padding = 5;
+                var position = element.tooltipPosition();
+                ctx.fillText(dataString + '%', position.x, position.y - (fontSize / 2) - padding);
+
+
+              });
             }
-          ]
-        },
-        options: {
-          legend: { display: false },
-          title: {
-            display: true,
-            text: title,
-            fontSize:20
-          },
-          scales: {
-                yAxes : [{
-                    ticks : {
-
-                        min : 0
-                    }
-                }]
-            }
-
+          });
         }
+      },
+
+      legend: {
+        display: true,
+
+        // generateLabels changes from chart to chart,  check the source,
+        // this one is from the doughut :
+        // https://github.com/chartjs/Chart.js/blob/master/src/controllers/controller.doughnut.js#L42
+        labels: {
+          generateLabels: function(chart) {
+            var data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              return data.labels.map(function(label, i) {
+                var meta = chart.getDatasetMeta(0);
+                var ds = data.datasets[0];
+                var arc = meta.data[i];
+                var custom = arc && arc.custom || {};
+                var getValueAtIndexOrDefault = theHelp.getValueAtIndexOrDefault;
+                var arcOpts = chart.options.elements.arc;
+                var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
+                var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+                var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
+                  return {
+                  // And finally :
+                  text:label,
+                  fillStyle: fill,
+                  strokeStyle: stroke,
+                  lineWidth: bw,
+                  hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+                  index: i
+                };
+              });
+            }
+            return [];
+          }
+        }
+      }
+    };
+
+    // Chart declaration:
+    var myPieChart = new Chart(ctx2, {
+      type: 'pie',
+      data: data,
+      options: options
     });
 
-    });
+  // part for bar chart
+  ctx = document.getElementById("bar-chart");
+
+  ctx.style.backgroundColor="#fff";
 
 
+
+  new Chart(ctx, {
+    type: 'bar',
+
+    data: {
+      labels: label,
+      datasets: [
+        {
+          label: label,
+          backgroundColor: ["rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)","rgba(240, 87, 207, 0.82)","rgba(247, 135, 239, 0.82)","rgba(238, 52, 86, 0.82)", "rgba(74, 185, 240, 0.82)","rgba(48, 145, 222, 0.82)", "rgba(136, 58, 221, 0.82)","rgba(238, 193, 80, 0.82)"],
+          data: values
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      hover: {
+        animationDuration: 0
+      },
+      animation: {
+        onComplete: function () {
+          var chartInstance = this.chart;
+          var ctx = chartInstance.ctx;
+          ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+          ctx.fillStyle = "black";
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+
+          this.data.datasets.forEach(function (dataset, i) {
+            var meta = chartInstance.controller.getDatasetMeta(i);
+            meta.data.forEach(function (bar, index) {
+                var data = dataset.data[index];
+                ctx.fillText(data, bar._model.x, bar._model.y - 5);
+            });
+          });
+        }
+      },
+      title: {
+        display: true,
+        text: title,
+        fontSize:20
+      },
+      layout: {
+            padding: {
+                left: 20,
+                right: 20,
+                top: 0,
+                bottom: 0
+            }
+        },
+      scales: {
+        yAxes : [{
+            ticks : {
+
+                min : 0,
+                max : max_value+1,
+                userCallback: function(label, index, labels) {
+                  if (Math.floor(label) === label) {
+                  return label;
+                  }
+
+                },
+            }
+        }]
+      }
+
+    }
+  });
 });
 
 function hasDuplicates(array) {
@@ -85,8 +232,6 @@ function create_movie_poll(){
   console.log("Poll name here");
   var options = document.getElementsByClassName('poll-option');
   var category = $("#category").val();
-  var description = $("#poll_description").val();
-  console.log("The description is ",description);
   var options_list =[];
   for (var i=0; i<options.length;i++){
     options_list.push(options[i].value);
@@ -94,11 +239,6 @@ function create_movie_poll(){
 
   if(poll_name==""){
     alert("The poll name is empty!");
-    return;
-  }
-
-  if(description.length>200){
-    alert("The description's length is too long!");
     return;
   }
 
@@ -127,8 +267,7 @@ function create_movie_poll(){
     data : {
       poll_name : poll_name,
       options: options_string,
-      category:category,
-      description:description
+      category:category
     },
     type : 'POST',
     url : '/create_poll_submit'
