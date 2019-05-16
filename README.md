@@ -31,7 +31,7 @@ Install python3, sqlite3
 1. Set up a virtual environment:
  - use pip or another package manager to install virtualenv package `pip install virtualenv`
  - start the provided virtual environment
-   `source virtual-environment/bin/activate`
+   `source venv/bin/activate`
  - This should include flask and all the required packages
 2. Install sqlite
  - [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
