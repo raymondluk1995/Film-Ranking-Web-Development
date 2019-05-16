@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect,request,json
 from app import app,db
-from app.forms import LoginForm,RegistrationForm,ShowUserForm,MultiCheckboxField,ShowPollForm,ShowOptionForm,ShowResponseForm
+from app.forms import LoginForm,RegistrationForm,ShowUserForm,MultiCheckboxField,ShowPollForm,ShowOptionForm,ShowResponseForm,AddUserForm
 from flask_login import current_user,login_user,logout_user,login_required
 from app.models import User,Poll,Option,Behaviour
 from flask_login import login_required
@@ -77,6 +77,26 @@ def delete_user():
         return redirect(url_for('index'))
     return render_template('delete_user.html',title='Delete User',user_form=user_form)
 
+@app.route('/add_user',methods=['GET','POST'])
+def add_user():
+    if (not current_user.administrator or current_user.is_anonymous):
+        return redirect(url_for('index'))
+    form = AddUserForm()
+    if form.validate_on_submit():
+        preference_string = ",".join(form.example.data)
+        admin_value = 0
+
+        if(form.admin.data=="yes"):
+            admin_value=1
+
+        user = User(username=form.username.data, email=form.email.data,preference=preference_string,administrator=admin_value)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('add_user'))
+    return render_template('add_user.html', title='Add User', form=form)
+
 @app.route('/delete_poll',methods=['GET','POST'])
 def delete_poll():
     if (not current_user.administrator or current_user.is_anonymous):
@@ -127,9 +147,12 @@ def delete_response():
         for response_str in response_form.example.data:
             user_name = response_str.split(':')[0]
             poll_name = response_str.split(':')[1]
+            option_name = response_str.split(':')[2]
             user_id = db.session.query(User).filter_by(username=user_name).first().id
             poll_id = db.session.query(Poll).filter_by(poll_name=poll_name).first().id
             db.session.query(Behaviour).filter_by(poll_id=poll_id,user_id=user_id).delete()
+            option_object = Option.query.filter_by(option=option_name).first()
+            option_object.votes -=1
             db.session.commit()
         return redirect(url_for('index'))
     return render_template('delete_response.html',title='Delete Response',response_form=response_form)
@@ -209,6 +232,6 @@ def template(id):
             behaviour_object = Behaviour(poll_id=id,user_id=current_user.id,option=option_form.example.data)
             db.session.add(behaviour_object)
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('template',id=id))
 
     return render_template('template.html',title='Vote Here',description=description,labels=options_str,values=votes_str,option_form=option_form,behaviour=behaviour,poll_name=poll_name)

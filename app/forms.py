@@ -4,6 +4,7 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo,Len
 from app.models import User,Poll,Option,Behaviour
 from app import db
 from wtforms_sqlalchemy.fields import QuerySelectField
+import re
 
 
 
@@ -22,7 +23,7 @@ class MultiCheckboxField(SelectMultipleField):
 class RegistrationForm(FlaskForm):
     username = StringField('Username (at least 4 characters and maximum 10 characters)', validators=[DataRequired(),Length(min=4,max=10)],render_kw={"placeholder": "Username..."})
     email = StringField('Email', validators=[DataRequired(), Email()],render_kw={"placeholder": "Email..."})
-    password = PasswordField('Password', validators=[DataRequired()],render_kw={"placeholder": "Password..."})
+    password = PasswordField('Password (Consist of Uppercase, Lowercase and Digit, at least length of 8)', validators=[DataRequired(),Length(min=8)],render_kw={"placeholder": "Password..."})
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')],render_kw={"placeholder": "Repeat Password..."})
     submit = SubmitField('Register')
@@ -45,6 +46,10 @@ class RegistrationForm(FlaskForm):
     def validate_example(self,example):
         if(len(self.example.data)<1):
             raise ValidationError('Please choose at least one preference')
+
+    def validate_password(self,password):
+        if(re.search("[A-Z]",password.data)==None or re.search("[a-z]",password.data)==None or re.search("\d",password.data)==None):
+            raise ValidationError('Password is too weak!')
 
 class ShowUserForm(FlaskForm):
     list_of_users = [u.username for u in User.query.filter_by(administrator=0)]
@@ -97,3 +102,41 @@ class ShowResponseForm(FlaskForm):
     def validate_example(self,example):
         if(len(self.example.data)<1):
             raise ValidationError('You are not deleting any response!')
+
+class AddUserForm(FlaskForm):
+    username = StringField('Username (at least 4 characters and maximum 10 characters)', validators=[DataRequired(),Length(min=4,max=10)],render_kw={"placeholder": "Username..."})
+    email = StringField('Email', validators=[DataRequired(), Email()],render_kw={"placeholder": "Email..."})
+    password = PasswordField('Password (Consist of Uppercase, Lowercase and Digit, at least length of 8)', validators=[DataRequired(),Length(min=8)],render_kw={"placeholder": "Password..."})
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')],render_kw={"placeholder": "Repeat Password..."})
+    submit = SubmitField('Register')
+
+    string_of_preference = ['Romantic Movie,Horror Movie,Fiction Movie,Documentary Movie,Comedy Movie,Action Movie']
+    list_of_preference = string_of_preference[0].split(',')
+    preference = [(x, x) for x in list_of_preference]
+    example = MultiCheckboxField('Label', choices=preference)
+
+    admin_options = [('yes','yes'),('no','no')]
+    admin = RadioField('Label',choices=admin_options)
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different username.')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different email address.')
+
+    def validate_example(self,example):
+        if(len(self.example.data)<1):
+            raise ValidationError('Please choose at least one preference')
+
+    def validate_admin(self,admin):
+        if(self.admin.data==""):
+            raise ValidationError('You are not choosing any admin options!')
+
+    def validate_password(self,password):
+        if(re.search("[A-Z]",password.data)==None or re.search("[a-z]",password.data)==None or re.search("\d",password.data)==None):
+            raise ValidationError('Password is too weak!')

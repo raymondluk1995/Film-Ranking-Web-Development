@@ -1,0 +1,154 @@
+commit b5891082491e97f20ce0f63f11d1347931c4d310
+Merge: c42229a 969e9f3
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 13 18:44:08 2019 +0800
+
+    Merge branch 'master' of https://github.com/raymondluk1995/CITS3403-Project
+
+commit c42229a4037cd8c17631b13676b09271e1e96230
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 13 18:43:50 2019 +0800
+
+    pie chart added and some modifications on chart label
+
+commit 969e9f3a7d1e41c8c06a462df6c80b2c766218d8
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sun May 12 00:18:05 2019 +0800
+
+    Update routes.py
+
+commit bc339525c7739155ab0d97acdefa98dd2d9c4167
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 11 11:23:53 2019 +0800
+
+    Update forms.py
+
+commit 56a3270064d5794c9d865c9aaa2fd244628204c8
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 11 11:23:17 2019 +0800
+
+    Update login.html
+    
+    add 'remember me'
+
+commit ff31170a26fb9096b8909aa431ebc2a36b4c6dc3
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 11 10:52:17 2019 +0800
+
+    Update register.html
+
+commit 28db298bfa32458372d9a28a02aa183cb38497b8
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Thu May 9 10:01:50 2019 +0800
+
+    The result in the chart is sorted now
+
+commit bf446529d737ae3d427598f5559219723ee9b679
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Wed May 8 19:18:22 2019 +0800
+
+    Initialize the database again and make some changes to the form and route
+
+commit f91520d41737482ae1e70836cd9ebd3241d41e84
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Wed May 8 00:25:27 2019 +0800
+
+    some changes in color
+
+commit 33ab6bfb928406ed7ed89e41766dd3d767594eef
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Wed May 8 00:17:48 2019 +0800
+
+    Data Visualisation Part done
+
+commit d9026060d0f9ccb4724b3759f4e7324c67caf7b3
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Tue May 7 22:49:43 2019 +0800
+
+    Some Responsive Page Changes
+
+commit 1685152698976c15d058e66f74006ffa3aeab46c
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Tue May 7 00:33:40 2019 +0800
+
+    Template Render and Delete Response done
+
+commit edca5de31ca55df85c04d04200d7b4abfd6ba620
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 6 16:14:40 2019 +0800
+
+    Changes to index.html
+
+commit c8da30a95ec7c635e68bb1b63d5f1df599102f8f
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 6 14:59:08 2019 +0800
+
+    Delete Poll Part done
+
+commit cab3b39ed1f9a753eb113f42c731369c0dca2e8e
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sun May 5 18:10:44 2019 +0800
+
+    Create Poll Page goes further
+
+commit 5d56e112366e1197681a286066df7b886d3509b0
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sun May 5 17:28:41 2019 +0800
+
+    A working create poll front end created
+
+commit 5668ec606163502002473c8d97418e27a2fd8916
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sun May 5 10:13:30 2019 +0800
+
+    config.py should be ignored
+
+commit a3f00d680b4bd47ac42618bdfca1371ef5dfc8e0
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sun May 5 10:07:12 2019 +0800
+
+    Merge the branch manually
+    
+    Merge the branch on Github failed, need to copy paste the content manually
+
+commit 55d2e13f336f7400cf78dd1e10d43693204f9c96
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Fri May 3 17:35:00 2019 +0800
+
+    Add files via upload
+
+commit d0acabd4c6407bf7f6ae71392a8fe14c558a6d96
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Fri Mar 29 13:13:32 2019 +0800
+
+    Update style.css
+
+commit 4d049932bee322320c958cab7235506291cc812b
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Fri Mar 29 00:10:47 2019 +0800
+
+    Index html with a carousel demo1
+
+commit 0a9bd8fe84841dad29a352f473ccdbb2bf46f49e
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat Mar 23 16:31:56 2019 +0800
+
+    Registration Form Added
+
+commit 6d5f7df8b9cea1e952d666bee7553ec9c3522c9d
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat Mar 23 14:54:48 2019 +0800
+
+    Login Page demo 2
+
+commit c46c153081d9b53391a36c5588800a7d334b9fe4
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat Mar 23 13:41:45 2019 +0800
+
+    Login Page demo1 done
+
+commit 10e841a944fdd83b9532c61497924ec193030960
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Fri Mar 22 16:14:35 2019 +0800
+
+    Initial commit

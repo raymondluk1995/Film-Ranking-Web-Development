@@ -49,6 +49,7 @@
   {% if current_user.administrator %}
   <div class="sd-div-middle margin-top-40 margin-bottom-30">
       <a href="{{url_for('create_poll')}}" class="button lightBlue hover-text-lightgrey padding-center">Create Poll</a>
+      <a href="{{url_for('add_user')}}" class="button pink hover-text-lightgrey padding-center">Add User</a>
       <a href="{{url_for('delete_poll')}}" class="button purple hover-text-lightgrey padding-center">Delete Poll</a>
       <a href="{{url_for('delete_user')}}" class="button lightred hover-text-lightgrey padding-center">Delete User</a>
       <a href="{{url_for('delete_response')}}" class="button green hover-text-lightgrey padding-center">Delete Response</a>

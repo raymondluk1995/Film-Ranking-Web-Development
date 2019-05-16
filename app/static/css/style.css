@@ -47,6 +47,7 @@ li{
   --lightYellow: #fffbb1;
   --purple:rgb(156, 15, 146);
   --yellow: rgb(241, 233, 40);
+  --pink: rgb(235, 104, 222);
 }
 
 .button {
@@ -341,6 +342,9 @@ li.sd-right {
   border-bottom: 8px solid var(--purple);
 }
 
+#addUser-lv1title{
+  border-bottom: 8px solid var(--pink);
+}
 
 
 
@@ -484,6 +488,11 @@ li.sd-right {
   color: var(--white);
 }
 
+.pink,.hover-pink:hover{
+  background-color: var(--pink) !important;
+  color: var(--white);
+}
+
 /* ----------font-size tool----------- */
 .large{
   font-size: 18px;
@@ -616,7 +625,7 @@ li.sd-right {
 
 }
 
-@media only screen and (max-width: 1101px) {
+@media only screen and (max-width: 1300px) {
   .hide-large {
     display: none !important;
   }
