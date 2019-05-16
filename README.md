@@ -1,12 +1,11 @@
 # CITS3403-Project
 
 
-A simple flask app for allocating student pairs in the [CITS3403 project](http://teaching.csse.uwa.edu.au/units/CITS3403/index.php?fname=projects&project=yes).
-
+A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users. 
 ## Getting Started
 
 Activate the python virtual environment:
-`$source virtual-environment/bin/activate`
+`$source venv/bin/activate`
 
 To run the app:
 `$flask run`
@@ -44,16 +43,16 @@ This should start the app running on localhost at port 5000, i.e. [http://localh
 
 ## Running the tests
 
-A few tests now:
+To run the test you need to comment out this line in app.__init__.py
+
+ #from app import routes,models
+
+
 
 To run unit tests
 `python -m tests.unittest`
 
-To run selenium tests, make sure that you have the 
-appropriate web driver installed. In this case it should be geckodriver for Firefox, 
-and it assumes that it is installed in the test directory.
-Then start the webserver in TestingConfig, and run
-`python -m tests.systemtest`
+
 
 ## Deployment
 
@@ -71,8 +70,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Authors
 
-* **Tim French** - *Initial work* - [drtnf](https://github.com/drtnf)
-
+* **Minrui Lu ** - *Initial work* - [raymondluk1995](https://github.com/raymondluk1995)
+* **Wenjing Zheng ** - *Initial work* - [wenjing33](https://github.com/wenjing33)
 
 ## License
 
