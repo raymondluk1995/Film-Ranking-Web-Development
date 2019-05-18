@@ -1,3 +1,35 @@
+commit acca32f9552987e7fe04c000dc3874ff93caa5d3
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Thu May 16 23:38:36 2019 +0800
+
+    Update README.md
+
+commit f7a7714496bdb661aab0ddd3fb57a821894b47bc
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Thu May 16 23:36:41 2019 +0800
+
+    Update README.md
+
+commit 1fa6eda40d8c2fb3621bfcbceeeb3907c651b2a5
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Thu May 16 23:27:04 2019 +0800
+
+    Create README.md
+
+commit 6c45d1f7eaeb843bf5aba43a7ac3c8321dadcf80
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Thu May 16 23:15:36 2019 +0800
+
+    add testing file
+    
+    .py for unittest the class in model.py
+
+commit a7a9973d73982d92bdd46b9bb53baec9f8b2c2ad
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Thu May 16 20:22:05 2019 +0800
+
+    add_user page added, and password validation added
+
 commit b5891082491e97f20ce0f63f11d1347931c4d310
 Merge: c42229a 969e9f3
 Author: Minrui Lu <raymondluk1995@outlook.com>

@@ -579,8 +579,6 @@ li.sd-right {
   width:300px;
 }
 
-
-
 .sd-row-padding, .sd-row-padding > .col {
   padding: 0 8px;
 }
@@ -626,10 +624,6 @@ li.sd-right {
 }
 
 @media only screen and (max-width: 1300px) {
-  .hide-large {
-    display: none !important;
-  }
-
   #carousel-content{
     margin-top:250px;
   }

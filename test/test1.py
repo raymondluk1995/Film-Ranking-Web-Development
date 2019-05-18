@@ -11,22 +11,24 @@ class StudentModelCase(unittest.TestCase):
     self.app = app.test_client()#creates a virtual test environment
     db.create_all()
     user1 = User(id=23,username='test2',email='333@qq.com',preference="Action Movie")
-    #admin = User(id=5,username='admin',email='311133@qq.com',adminstrator=1,preference="Action Movie")
+    admin = User(id=5,username='admin',email='311133@qq.com',adminstrator=1,preference="Action Movie")
     poll1 = Poll(id=11, poll_name="sd", category="Action Movie", description="nothing")
     option1 = Option(id=1,poll_id=poll1.id, option='Lion King', votes=0)
-    # be1 =Behaviour(id=2 poll_id=11,user_id=23)
+    be1 =Behaviour(id=2 poll_id=11,user_id=23)
 
 
     db.session.add(user1)
+    db.session.add(admin)
     db.session.add(poll1)
-
+    db.session.add(option1)
     db.session.commit()
+    db.session.commit(be1)
     pass
 
   def tearDown(self):
     db.session.remove()
     db.drop_all()
-    print('hello')
+    print("Now the database is dropped")
 
   def test_registration(self):
 
