@@ -21,18 +21,26 @@ To exit the environment:
 Requires python3, flask, venv, and sqlite
 
 ```
-Give examples
+
 ```
 
 ### Installing
 
-Install python3, sqlite3
+Install python3, sqlite3, flask, wtf,sqlalchemy
 
 1. Set up a virtual environment:
  - use pip or another package manager to install virtualenv package `pip install virtualenv`
  - start the provided virtual environment
    `source venv/bin/activate`
  - This should include flask and all the required packages
+ 'pip install flask 
+  pip install flask_script
+  pip install python-dotenv
+  pip install flask-wtf
+  pip install flask-sqlalchemy
+  pip install flask-migrate
+  pip install flask-login
+  pip install wtforms_sqlalchemy'
 2. Install sqlite
  - [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
  - In \*nix, `sudo apt-get install sqlite`
