@@ -33,16 +33,15 @@ Install python3, sqlite3, flask, wtf,sqlalchemy
  - start the provided virtual environment
    `source venv/bin/activate`
  - This should include flask and all the required packages
- `pip install flask 
-  pip install flask_script
-  pip install python-dotenv
-  pip install flask-wtf
-  pip install flask-sqlalchemy
-  pip install flask-migrate
-  pip install flask-login
-  pip install wtforms_sqlalchemy'-
+ pip install flask 
+ pip install flask_script
+ pip install python-dotenv
+ pip install flask-wtf
+ pip install flask-sqlalchemy
+ pip install flask-migrate
+ pip install flask-login
+ pip install wtforms_sqlalchemy
   
- 
  - [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
  - In \*nix, `sudo apt-get install sqlite`
 3. Build the database: `flask db init`
