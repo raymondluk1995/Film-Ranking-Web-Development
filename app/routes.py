@@ -163,15 +163,10 @@ def create_poll():
 
 @app.route('/create_poll_submit',methods=['GET', 'POST'])
 def create_poll_submit():
-    print("hi")
     poll_name = request.values.get('poll_name')
     options = request.values.get('options')
     category = request.values.get('category')
     description = request.values.get('description')
-    print(poll_name)
-    print(options)
-    print(category)
-    print(description)
     #validation part
     categories = ['Romantic Movie','Horror Movie','Fiction Movie','Documentary Movie','Comedy Movie','Action Movie']
     if (poll_name=="" or len(options.split(','))<2 or len(options.split(','))>10 or len(description)>200 or category not in categories):
@@ -179,9 +174,6 @@ def create_poll_submit():
     # In case duplicate options
 
     options = options.split(',')
-    print(len(options))
-    print(options)
-    print(list(set(options)))
     if(len(options)!=len(list(set(options)))):
         return redirect(url_for('index'))
 

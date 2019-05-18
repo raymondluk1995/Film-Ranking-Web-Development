@@ -1,7 +1,7 @@
 # CITS3403-Project
 
 
-A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users. 
+A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users.
 ## Getting Started
 
 Activate the python virtual environment:
@@ -80,4 +80,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Built following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
-

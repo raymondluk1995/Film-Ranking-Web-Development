@@ -229,12 +229,25 @@ function hasDuplicates(array) {
 function create_movie_poll(){
   console.log("function starts");
   var poll_name = $("#poll_name").val();
-  console.log("Poll name here");
   var options = document.getElementsByClassName('poll-option');
+  var description = $("#poll_description").val(); 
   var category = $("#category").val();
   var options_list =[];
   for (var i=0; i<options.length;i++){
     options_list.push(options[i].value);
+  }
+
+  var poll_name_check = poll_name.search(/[^A-Za-z0-9\s\(\)]/ig);
+  if(poll_name_check>=0){
+    alert("The poll name is invalid!");
+    return;
+  }
+
+  var description_check = description.search(/[^A-Za-z0-9\s\(\),\.!\"\']/ig);
+  if(description_check>=0){
+    alert("The description is invalid!");
+    console.log("The description is invalid!");
+    return;
   }
 
   if(poll_name==""){
@@ -267,7 +280,8 @@ function create_movie_poll(){
     data : {
       poll_name : poll_name,
       options: options_string,
-      category:category
+      category:category,
+      description:description
     },
     type : 'POST',
     url : '/create_poll_submit'
