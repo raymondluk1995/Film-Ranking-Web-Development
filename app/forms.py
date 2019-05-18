@@ -37,6 +37,8 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
+        if(re.search("[^A-Za-z0-9]",username.data)!=None):
+            raise ValidationError('Username should only consist of characters and digits')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -123,6 +125,8 @@ class AddUserForm(FlaskForm):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
+        if(re.search("[^A-Za-z0-9]",username.data)!=None):
+            raise ValidationError('Username should only consist of characters and digits')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()

@@ -162,10 +162,12 @@
         {% for i in range(polls|length) %}
           {% set id =poll_id[i] %}
           {% if poll_categories[i] in user_preference %}
-          <div class="sd-middle">
-            <a href="{{url_for('template',id=id)}}" class="button green hover-text-lightgrey padding-center width-500  font-8">{{polls[i]}}</a>
-          </div>
-          <br /><br /><br /><br />
+            {% if behaviour_list[i]==0 %}
+              <div class="sd-middle">
+                <a href="{{url_for('template',id=id)}}" class="button green hover-text-lightgrey padding-center width-500  font-8">{{polls[i]}}</a>
+              </div>
+              <br /><br /><br /><br />
+            {% endif %}
           {% endif %}
         {% endfor %}
       <!-- Maybe You Like Part -->
@@ -174,12 +176,31 @@
         {% for i in range(polls|length) %}
           {% set id =poll_id[i] %}
           {% if poll_categories[i] not in user_preference %}
-          <div class="sd-middle">
-            <a href="{{url_for('template',id=id)}}" class="button lightred hover-text-lightgrey padding-center width-500 font-8">{{polls[i]}}</a>
-          </div>
-          <br /><br /><br /><br />
+            {% if behaviour_list[i]==0 %}
+              <div class="sd-middle">
+                <a href="{{url_for('template',id=id)}}" class="button lightred hover-text-lightgrey padding-center width-500 font-8">{{polls[i]}}</a>
+              </div>
+              <br /><br /><br /><br />
+            {% endif %}
           {% endif %}
         {% endfor %}
+      <!-- Maybe You Like Part Ends -->
+
+      <!-- Voted Poll -->
+      <br /><br /><br /><header class="lv1title sd-middle" id="voted-lv1title"><b>Voted Polls</b></header>
+      <div class="content">
+        {% for i in range(polls|length) %}
+          {% set id =poll_id[i] %}
+
+          {% if behaviour_list[i]==1 %}
+            <div class="sd-middle">
+              <a href="{{url_for('template',id=id)}}" class="button lightBlue hover-text-lightgrey padding-center width-500 font-8">{{polls[i]}}</a>
+            </div>
+            <br /><br /><br /><br />
+          {% endif %}
+
+        {% endfor %}
+      <!-- Maybe You Like Part Ends -->
 
     {% endif %}
     </div>

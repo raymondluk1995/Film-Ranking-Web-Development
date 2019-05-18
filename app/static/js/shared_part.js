@@ -230,20 +230,33 @@ function create_movie_poll(){
   console.log("function starts");
   var poll_name = $("#poll_name").val();
   var options = document.getElementsByClassName('poll-option');
-  var description = $("#poll_description").val(); 
+  var description = $("#poll_description").val();
   var category = $("#category").val();
   var options_list =[];
   for (var i=0; i<options.length;i++){
     options_list.push(options[i].value);
   }
 
-  var poll_name_check = poll_name.search(/[^A-Za-z0-9\s\(\)]/ig);
+  var poll_name_check = poll_name.search(/[^A-Za-z0-9\s\(\)-?\.!]/ig);
   if(poll_name_check>=0){
     alert("The poll name is invalid!");
     return;
   }
 
-  var description_check = description.search(/[^A-Za-z0-9\s\(\),\.!\"\']/ig);
+  for ( i=0;i<options_list.length;i++){
+    var option_check = options_list[i].search(/[^A-Za-z0-9\s\(\):\'\.]/ig);
+    if(option_check>=0){
+      alert(options_list[i]+" is illegal!");
+      return;
+    }
+    if(options_list[i].length>50){
+      alert("The length of "+options_list[i]+" is too long!");
+      return;
+    }
+
+  }
+
+  var description_check = description.search(/[^A-Za-z0-9\s\(\),\.!\"\?!-\']/ig);
   if(description_check>=0){
     alert("The description is invalid!");
     console.log("The description is invalid!");

@@ -37,7 +37,7 @@
                 <span class="alert">[{{ error }}]</span>
                 {% endfor %}
               </div>
-              
+
               <div class="form-check">
                     {{ form.remember(class="form-check-input") }}
                     {{ form.remember.label(class="form-check-label") }}
@@ -49,6 +49,17 @@
               <p>Don't have an account? Click here to register</p>
               <a href="{{url_for('register')}}"class="button lightred justify-content-center hover-text-lightgrey" id="register-btn"><i class="fas fa-pencil-alt margin-right-8"></i>Register</a>
             </div>
+            {% with messages = get_flashed_messages() %}
+             {% if messages %}
+            <div class="center-align alert">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+
+            </div>
+            {% endif %}
+           {% endwith %}
+
           </div>
         </div>
       </div>

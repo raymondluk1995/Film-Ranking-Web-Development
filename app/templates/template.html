@@ -4,15 +4,19 @@
 
 
 <!-- Form Part -->
-<div class="center-align login-content outer" id="register-part">
+{% if current_user.administrator%}
+<div class="center-align login-content outer form-content">
+{% else %}
+<div class="center-align login-content outer">
+{% endif %}
   <div class="container">
     <header class="lv1title" id="reg-lv1title"><b>{{poll_name}}</b></header>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 form-box">
         <div class="form-top">
           <div class="form-top-left">
-            <h3>{{poll_name}}</h3>
-            <p>The poll is a single choice voting</p>
+            <h4>{{poll_name}}</h4>
+            <p>{{description}}</p>
           </div>
           <div class="form-top-right">
             <i class="fas fa-vote-yea"></i>
@@ -44,7 +48,7 @@
 </div>
 
 <!-- Plotting Part -->
-<div class="content canvas">
+<div class="content canvas non-display" id="canvas-part">
   <canvas id="bar-chart" class="hide-small"></canvas>
   <br />
   <canvas id="pieChart" width="800" height="450" class="hide-small"></canvas>
@@ -77,5 +81,9 @@
     values.push(combine[i][1]);
   }
   var max_value = values[0];
+  var canvas_part = document.getElementById("canvas-part");
+  if(max_value>0){
+    canvas_part.style.display="block";
+  }
 </script>
 {% endblock %}

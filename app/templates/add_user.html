@@ -4,7 +4,7 @@
 
 
 <!-- Registration Part -->
-<div class="center-align login-content outer" id="register-part">
+<div class="center-align login-content outer form-content" id="register-part">
   <div class="container">
     <header class="lv1title" id="addUser-lv1title"><b>Add User</b></header>
     <div class="row">
@@ -19,6 +19,16 @@
           </div>
         </div>
         <div class="form-bottom">
+          {% with messages = get_flashed_messages() %}
+           {% if messages %}
+          <div class="center-align success">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+
+          </div>
+          {% endif %}
+         {% endwith %}
           <form role="form" action="" method="post" class="login-form" id="registerForm">
             <div class="form-group">
               {{form.hidden_tag()}}

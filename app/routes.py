@@ -14,10 +14,17 @@ def index():
     polls = [p.poll_name for p in Poll.query.all()]
     poll_id = [p.id for p in Poll.query.all()]
     poll_categories = [p.category for p in Poll.query.all()]
+    behaviour_list = []
     user_preference=[]
     if current_user.is_authenticated:
         user_preference = current_user.preference.split(',')
-    return render_template("index.html",title='Home',polls=polls,user_preference=user_preference,poll_categories=poll_categories,poll_id=poll_id)
+        for p_id in poll_id:
+            vote_or_not = Behaviour.query.filter_by(poll_id=p_id,user_id=current_user.id).first()
+            if(vote_or_not is None):
+                behaviour_list.append(0)
+            else:
+                behaviour_list.append(1)
+    return render_template("index.html",title='Home',polls=polls,user_preference=user_preference,poll_categories=poll_categories,poll_id=poll_id,behaviour_list=behaviour_list)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -74,7 +81,9 @@ def delete_user():
         for user_name in user_form.example.data:
             db.session.query(User).filter_by(username=user_name).delete()
             db.session.commit()
-        return redirect(url_for('index'))
+            report_str = "Delete "+user_name + ' succesfully'
+            flash(report_str)
+        return redirect(url_for('delete_user'))
     return render_template('delete_user.html',title='Delete User',user_form=user_form)
 
 @app.route('/add_user',methods=['GET','POST'])
@@ -93,7 +102,7 @@ def add_user():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        flash('Congratulations, you have added a user!')
         return redirect(url_for('add_user'))
     return render_template('add_user.html', title='Add User', form=form)
 
@@ -110,12 +119,13 @@ def delete_poll():
         for poll_name in poll_form.example.data:
             poll_object = db.session.query(Poll).filter_by(poll_name=poll_name).first()
             poll_id = poll_object.id
-            print(poll_id)
             db.session.query(Option).filter_by(poll_id=poll_id).delete()
             db.session.query(Behaviour).filter_by(poll_id=poll_id).delete()
             db.session.query(Poll).filter_by(id=poll_id).delete()
             db.session.commit()
-        return redirect(url_for('index'))
+            report_str = "Delete poll: "+poll_name + ' succesfully'
+            flash(report_str)
+        return redirect(url_for('delete_poll'))
     return render_template('delete_poll.html',title='Delete Poll',poll_form=poll_form)
 
 @app.route('/delete_response',methods=['GET','POST'])
@@ -151,9 +161,10 @@ def delete_response():
             user_id = db.session.query(User).filter_by(username=user_name).first().id
             poll_id = db.session.query(Poll).filter_by(poll_name=poll_name).first().id
             db.session.query(Behaviour).filter_by(poll_id=poll_id,user_id=user_id).delete()
-            option_object = Option.query.filter_by(option=option_name).first()
+            option_object = Option.query.filter_by(option=option_name,poll_id=poll_id).first()
             option_object.votes -=1
             db.session.commit()
+        flash('Delete response successfully')
         return redirect(url_for('index'))
     return render_template('delete_response.html',title='Delete Response',response_form=response_form)
 
@@ -190,8 +201,7 @@ def create_poll_submit():
         insert_option = Option(poll_id=poll_id,option=option)
         db.session.add(insert_option)
         db.session.commit()
-
-    return redirect(url_for('index'))
+    return redirect(url_for('create_poll'))
 
 
 
@@ -219,7 +229,7 @@ def template(id):
 
     if option_form.validate_on_submit():
         if(behaviour==False):
-            option_object = Option.query.filter_by(option=option_form.example.data).first()
+            option_object = Option.query.filter_by(option=option_form.example.data,poll_id=id).first()
             option_object.votes +=1
             behaviour_object = Behaviour(poll_id=id,user_id=current_user.id,option=option_form.example.data)
             db.session.add(behaviour_object)

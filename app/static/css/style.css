@@ -78,6 +78,10 @@ li{
   color:red;
 }
 
+.success{
+  color:green;
+}
+
 
 /* -------------position tool ------------------*/
 .sd-top, .sd-bottom {
@@ -329,14 +333,9 @@ li.sd-right {
   border-bottom: 8px solid var(--lightRed);
 }
 
-#new-poll-lv1title{
+#new-poll-lv1title,#voted-lv1title,#allPoll-lv1title{
   border-bottom: 8px solid var(--lightBlue);
 }
-
-#allPoll-lv1title{
-  border-bottom: 8px solid var(--lightBlue);
-}
-
 
 #deletePoll-lv1title{
   border-bottom: 8px solid var(--purple);
