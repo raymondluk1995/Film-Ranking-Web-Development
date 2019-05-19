@@ -1,7 +1,11 @@
 # CITS3403-Project
 
 
-A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users.
+A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users. Mechanism that we using is First past the post voting.
+An adminstrator view, that can add and delete polls, delete responses, and add and delete users.
+An user(login) view, that can view polls and current standings, and submit responses to polls.
+A general view that can just view polls.
+
 ## Getting Started
 
 Activate the python virtual environment:
@@ -20,9 +24,6 @@ To exit the environment:
 
 Requires python3, flask, venv, and sqlite
 
-```
-
-```
 
 ### Installing
 
@@ -33,17 +34,17 @@ Install python3, sqlite3, flask, wtf,sqlalchemy
  - start the provided virtual environment
    `source venv/bin/activate`
  - This should include flask and all the required packages
- pip install flask 
- pip install flask_script
- pip install python-dotenv
- pip install flask-wtf
- pip install flask-sqlalchemy
- pip install flask-migrate
- pip install flask-login
- pip install wtforms_sqlalchemy
+ `pip install flask`
+ `pip install flask_script`
+ `pip install python-dotenv`
+ `pip install flask-wtf`
+ `pip install flask-sqlalchemy`
+ `pip install flask-migrate`
+ `pip install flask-login`
+ `pip install wtforms_sqlalchemy`
   
- - [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
- - In \*nix, `sudo apt-get install sqlite`
+2  [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
+  In \Linux, `sudo apt-get install sqlite`
 3. Build the database: `flask db init`
 4. `flask run`
 
@@ -56,11 +57,8 @@ To run the test you need to comment out this line in app.__init__.py
  #from app import routes,models
 
 
-
 To run unit tests
-`python -m tests.unittest`
-
-
+`python -m test.test1`
 
 ## Deployment
 
@@ -68,13 +66,7 @@ via localhost
 
 ## Built With
 
-vim and git
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
+git
 
 ## Authors
 
@@ -88,3 +80,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Built following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
+* Built following the [Pair up Flask App](https://github.com/drtnf/cits3403-pair-up) by **Tim French**
+* Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm) 
+* Build following the [Form Submission Using Ajax, PHP and Javascript](https://www.formget.com/form-submission-using-ajax-php-and-javascript/)
+* Build following the [Submit AJAX Forms with jQuery and Flask](https://www.youtube.com/watch?v=IZWtHsM3Y5A)
