@@ -57,10 +57,8 @@ Python3 environment
  - Or use pip or another package manager to install virtualenv package `pip install virtualenv`
  - start the provided virtual environment
    `source venv/bin/activate`
- -
 
-2. [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
-  In \Linux, `sudo apt-get install sqlite`
+2. Execute the following code to install environment: `$pip install -r requirements.txt`
 3. Build the database: `flask db init`
 4. `flask run`
 
@@ -94,10 +92,7 @@ git
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-
-* Built following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
+* Build following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
 * Built following the [Pair up Flask App](https://github.com/drtnf/cits3403-pair-up) by **Tim French**
-* Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm)
-* Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm)
-* Build following the [Form Submission Using Ajax, PHP and Javascript](https://www.formget.com/form-submission-using-ajax-php-and-javascript/)
 * Build following the [Submit AJAX Forms with jQuery and Flask](https://www.youtube.com/watch?v=IZWtHsM3Y5A)
+* Picture sources: [Logo](https://www.vectorstock.com/royalty-free-vector/movie-film-play-people-abstract-logo-vector-4097798), [background_original](https://medium.com/edmodoblog/more-than-coding-what-students-really-learn-from-computer-science-3d6870387fbc),[One Day](http://intrigue.ie/books-every-woman-read-one-day/),[IT](http://www.slaphappylarry.com/stephen-kings-it-storytelling-techniques/it-2017-movie-poster/),[Interstellar](https://wallpapershome.com/movies/sci-fi/interstellar-movie-matthew-mcconaughey-space-suit-snow-381.html),[Score](https://www.score-movie.com/), [Mr Bean's Holiday](https://images.app.goo.gl/D9mv1dzvzCDVWTDp8), [Fast and Furious 8](https://free4kwallpaper.com/fast-and-furious-8-movie-4k-wallpaper/)
