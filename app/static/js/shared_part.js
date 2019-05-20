@@ -95,10 +95,6 @@ $(document).ready(function() {
 
       legend: {
         display: true,
-
-        // generateLabels changes from chart to chart,  check the source,
-        // this one is from the doughut :
-        // https://github.com/chartjs/Chart.js/blob/master/src/controllers/controller.doughnut.js#L42
         labels: {
           generateLabels: function(chart) {
             var data = chart.data;

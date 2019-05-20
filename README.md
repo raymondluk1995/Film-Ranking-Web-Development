@@ -1,6 +1,6 @@
 # CITS3403-Project
 
-The project is a simple flask web app for movie polls. After login, users can vote for their favourite movie in each poll for once.
+The project is a simple flask web application for movie polls. After login, users can vote for their favourite movie in each poll for once.
 
 The purpose of this web application is getting the movie lover community together to vote for their favourite movies, expressing their preference and letting them know how do others think of movies.
 
@@ -31,7 +31,13 @@ When the admin user goes to the delete poll page, a multi-select form is provide
 
 Similar to the delete poll page, in delete user page, admin user can delete multiple users in one time and associated data will be also deleted. The delete response page is the same case.
 
+## Development
+- March: Login HTML page, Register HTML page and Index HTML page drafts are done, along with a CSS file. (Done by Minrui Lu)
+- April: No commitment
+- May:  
+  Wenjing Zheng: Create Poll HTML page draft, testing modules, ReadMe file
 
+  Minrui Lu: Flask Backend, Create Poll page, Delete Poll page, Add User Page, Delete User page, Delete Response page, Responsive CSS, shared_part.js JavaScript file, ReadMe file, Chart.js introduction, dummy data insertion
 
 ## Getting Started
 
@@ -72,7 +78,7 @@ To run the test you need to comment out this line in app.__init__.py
 
 
 To run unit tests
-`python -m test.test1`
+`$python -m test.test1`
 
 ## Deployment
 
@@ -92,7 +98,13 @@ git
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
+* External libraries introduced: [fontawesome](https://fontawesome.com/),[Google Fonts](https://fonts.google.com/),[JQuery](https://jquery.com/), [Chart.js](https://www.chartjs.org/),[bootstrap](https://getbootstrap.com/)
+* Build following the [HTML5 Tutorial](https://www.w3schools.com/html/), [CSS Tutorial](https://www.w3schools.com/css/default.asp),[JavaScript Tutorial](https://www.w3schools.com/js/default.asp)https://github.com/chartjs/Chart.js/blob/master/src/controllers/controller.doughnut.js#L42
 * Build following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
-* Built following the [Pair up Flask App](https://github.com/drtnf/cits3403-pair-up) by **Tim French**
+* Build following the [Pair up Flask App](https://github.com/drtnf/cits3403-pair-up) by **Tim French**
 * Build following the [Submit AJAX Forms with jQuery and Flask](https://www.youtube.com/watch?v=IZWtHsM3Y5A)
 * Picture sources: [Logo](https://www.vectorstock.com/royalty-free-vector/movie-film-play-people-abstract-logo-vector-4097798), [background_original](https://medium.com/edmodoblog/more-than-coding-what-students-really-learn-from-computer-science-3d6870387fbc),[One Day](http://intrigue.ie/books-every-woman-read-one-day/),[IT](http://www.slaphappylarry.com/stephen-kings-it-storytelling-techniques/it-2017-movie-poster/),[Interstellar](https://wallpapershome.com/movies/sci-fi/interstellar-movie-matthew-mcconaughey-space-suit-snow-381.html),[Score](https://www.score-movie.com/), [Mr Bean's Holiday](https://images.app.goo.gl/D9mv1dzvzCDVWTDp8), [Fast and Furious 8](https://free4kwallpaper.com/fast-and-furious-8-movie-4k-wallpaper/)
+* Slideshow Reference: [How TO - Slideshow](https://www.w3schools.com/howto/howto_js_slideshow.asp)
+* Bootstrap Form Reference: [Forms](https://getbootstrap.com/docs/4.0/components/forms/)
+* Checkbox WTForms Reference: [Checkbox WTForms Example (in Flask) ](https://gist.github.com/einSelbst/1797d4457814f31accfed825da202b31)
+* Chart.js Reference: [10 Chart.js example charts to get you started](https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/), [Show values on top of bars in chart.js](https://stackoverflow.com/questions/42556835/show-values-on-top-of-bars-in-chart-js/42562284),[ChartJS: datalabels: show percentage value in Pie piece](https://stackoverflow.com/questions/52044013/chartjs-datalabels-show-percentage-value-in-pie-piece)
