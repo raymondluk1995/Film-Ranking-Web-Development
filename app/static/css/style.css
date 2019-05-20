@@ -750,3 +750,11 @@ li.sd-right {
   width:100%;
   color: #fff;
 }
+
+.clarification p{
+  padding:12px;
+}
+
+.clarification h4{
+  padding-top:12px;
+}

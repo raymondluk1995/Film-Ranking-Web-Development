@@ -8,8 +8,8 @@ from werkzeug.urls import url_parse
 from flask import url_for
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/',methods=['GET', 'POST'])
+@app.route('/index',methods=['GET', 'POST'])
 def index():
     polls = [p.poll_name for p in Poll.query.all()]
     poll_id = [p.id for p in Poll.query.all()]
@@ -222,10 +222,11 @@ def template(id):
 
     option_form.example.choices = options
     behaviour_existance = db.session.query(Behaviour).filter_by(poll_id=id, user_id = current_user.id).first()
-
+    behaviour_option=""
     behaviour = False
     if(behaviour_existance):
         behaviour = True
+        behaviour_option = behaviour_existance.option
 
     if option_form.validate_on_submit():
         if(behaviour==False):
@@ -236,4 +237,4 @@ def template(id):
             db.session.commit()
             return redirect(url_for('template',id=id))
 
-    return render_template('template.html',title='Vote Here',description=description,labels=options_str,values=votes_str,option_form=option_form,behaviour=behaviour,poll_name=poll_name)
+    return render_template('template.html',title='Vote Here',behaviour_option=behaviour_option,description=description,labels=options_str,values=votes_str,option_form=option_form,behaviour=behaviour,poll_name=poll_name)

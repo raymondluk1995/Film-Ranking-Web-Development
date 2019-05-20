@@ -37,6 +37,7 @@
             </div>
             {% if behaviour%}
               <a class="button lightred justify-content-center hover-text-lightgrey full-width"><i class="fas fa-star margin-right-8"></i>Voted</a>
+              <p class="center-align">You voted for {{behaviour_option}}</p>
             {% else %}
             {{option_form.submit(size=32,class_="button lightred submit_btn hover-text-lightgrey")}}
             {% endif %}
