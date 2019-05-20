@@ -1,5 +1,9 @@
 # CITS3403-Project
 
+## Author
+Minrui Lu 22278526
+Wenjing Zheng 22126041
+
 The project is a simple flask web application for movie polls. After login, users can vote for their favourite movie in each poll for once.
 
 The purpose of this web application is getting the movie lover communities together to vote for their favourite movies, to express their preference and to know how do others think of movies.
@@ -63,7 +67,7 @@ To exit the environment:
 Python3 environment
 
 ### Dependencies
-flask, flask_script, python-dotenv, flask-wtf, flask-sqlalchemy, flask-migrate, flask-login, wtforms_sqlalchemy
+alembic, Flask, Flask-Login, Flask-Migrate, Flask-Script, Flask-SQLAlchemy, Flask-WTF, itsdangerous, Jinja2, Mako, MarkupSafe, python-dateutil, python-dotenv, python-editor, SQLAlchemy, Werkzeug, WTForms, WTForms-SQLAlchemy
 
 ### Installing
 
