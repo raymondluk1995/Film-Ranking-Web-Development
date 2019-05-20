@@ -1,3 +1,9 @@
+commit 287396c7f6d05b5a494fe2618960649b7a774b56
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 16:46:21 2019 +0800
+
+    Dependencies added to ReadMe
+
 commit 942ca3ea84574f51824823b34dfb21eaef262c5c
 Author: Minrui Lu <raymondluk1995@outlook.com>
 Date:   Mon May 20 16:38:44 2019 +0800
