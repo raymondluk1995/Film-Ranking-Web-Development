@@ -7,29 +7,29 @@ The purpose of this web application is getting the movie lover communities toget
 The social choice mechanism used is First Past the Post Voting. In each poll, a user can only vote for one candidate, and the candidate with the most votes ranks the first. The reason of applying this mechanism is that it can enable charts to give users an intuitionistic view of how many users are involved in a poll and how is the distribution of their favour. Moreover, this mechanism needs the least time to vote.
 
 ## Architecture
-The index page is the first landing page of this web application. What can be seen first is a carousel showing that this application categorises movies in 6 kinds: Romantic Movie, Horror Movie, Fiction Movie, Documentary Movie, Comedy Movie, and Action Movie. The tag on each carousel page links to the corresponding search result in Youtube. Below the carousel, is the note for users and all polls available now. If the user has not logged in, then clicking the poll name or clicking the user icon on the top right corner will skip to the login page.
+The index page is the first landing page of this web application. What can be seen first is a carousel showing that this application categorises movies in 6 kinds: Romantic Movie, Horror Movie, Fiction Movie, Documentary Movie, Comedy Movie, and Action Movie. The tag on each carousel page links to the corresponding search result in Youtube. Below the carousel, is the note for users and all polls available now. If the user has not logged in, then clicking the poll name or clicking the user icon at the top right corner will skip to the login page.
 
 In the login page, if the user has registered, he can login with the user name and password. Otherwise, a register button is for new users. When the user logins, if he inputs a wrong user name or password, he will fail and an error message will show up at the bottom of the login form. If login is successful, the user will be redirected back to the index page.
 
-In the register page, a new user needs to input his username, password, and email address, and to choose the movie categories that he prefers. There are restrictions on input fields, if wrong inputs are detected, error message will show up in the registration form. After registering successfully, the user will be redirected back to the login page.
+In the register page, a new user needs to input his username, password, and email address, and to choose the movie categories that he prefers. There are restrictions on input fields: if wrong inputs are detected, error message will show up in the registration form. After registering successfully, the user will be redirected back to the login page.
 
 ### Normal User
 After a normal user logins and gets redirected back to the index page, the user can see polls are divided into three sections: Recommended Polls, Maybe You Like, Voted Polls. Recommended Polls are the un-voted polls in the user's favourite movie categories; Maybe You Like part contains un-voted polls that are not in the user's favourite movie categories; Voted Polls part contains the polls the user has voted before.
 
-When a user clicks a un-voted poll tag on the index page, he will be directed to the template page which renders the corresponding poll. What can be seen are a single-choice form displaying options; a bar chart showing the current voting rank and vote numbers; a pie chart showing the vote proportions of each option. After the user commits his choice, the page gets refreshed and the user can see the latest result after his vote. At this moment, the commit button changes to a dummy button showing "Voted" and your previous option is shown at the bottom of the form.
+When a user clicks a un-voted poll tag on the index page, he will be directed to the template page which renders the corresponding poll. What can be seen are a single-choice form displaying options; a bar chart showing the current voting rank and vote numbers; a pie chart showing the vote proportions of each option. After the user commits his choice, the page gets refreshed and the user can see the latest result after his vote. At this moment, the commit button changes to a dummy button showing "Voted" and the user's previous choice is shown at the bottom of the form.
 
-When a user wants to logout, he can click the user icon at the top right corner in the navigation bar, and a dialog box pops out asking whether the user wants to logout. If the user clicks the Logout button, he finishes the logout process and gets redirected back to the index page.
+When a user wants to logout, he can click the user icon at the top right corner in the navigation bar, and a dialog box will pop out asking whether the user wants to logout. If the user clicks the Logout button, he finishes the logout process and gets redirected back to the index page.
 
 ### Admin User
-After an admin user logins and gets redirected back to the index page, what can be seen added is a menu of five buttons: Create Poll, Add User, Delete Poll, Delete User, Delete Response. Unlike a normal user, the index page puts all polls in one section. This is supposed to be helpful for administration.
+After an admin user logins and gets redirected back to the index page, what can be seen added is a menu of five buttons: Create Poll, Add User, Delete Poll, Delete User, Delete Response. Unlike a normal user, the index page puts all polls in one section. This is supposed to be convenient for poll administration.
 
-After clicking the Create Poll button, the admin user goes to the Create Poll page. In this page, the maximum options for creation is 10. This page is based on JavaScript and JQuery. If the user inputs something illegal, JavaScript will alert the user and not pass the values to the back end via AJAX.
+After clicking the Create Poll button, the admin user goes to the Create Poll page. In this page, an admin user can create a poll with maximum 10 options. This page is based on JavaScript and JQuery. If the user inputs something illegal, JavaScript will alert the user and not pass the values to the back end via AJAX.
 
-After clicking the Add User button, the admin user goes to the Add User page. The page is similar to the register page, but with one more option for deciding the admin attribute of the new user. If choose yes, then the new user is an administrator, otherwise, the new user is just a normal user.
+After clicking the Add User button, the admin user goes to the Add User page. The page is similar to the register page, but with one more option for deciding the admin attribute of the new user. If choose yes, the new user is an administrator, otherwise, the new user is just a normal user.
 
-When the admin user goes to the Delete Poll page, a multi-select form is provided. An admin user can delete multiple polls in one time. After a poll is deleted, its associated data (options and response) is also removed.
+When the admin user goes to the Delete Poll page, a multi-select form is provided. An admin user can delete multiple polls at once. After a poll is deleted, its associated data (options and response) is also removed.
 
-Similar to the Delete Poll page, in Delete User page, an admin user can delete multiple users in one time and associated data will be also deleted. The delete response page is the same case.
+Similar to the Delete Poll page, in Delete User page, an admin user can delete multiple users at once and associated data will be also deleted. The delete response page is the same case.
 
 ## Development
 - March:
