@@ -744,3 +744,9 @@ li.sd-right {
 .font-black{
   color:#000;
 }
+
+.clarification{
+  background-color: var(--lightBlue);
+  width:100%;
+  color: #fff;
+}

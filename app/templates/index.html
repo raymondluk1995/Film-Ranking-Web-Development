@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  {% if current_user.administrator %}
+  {% if current_user.administrator %} <!-- If the user is an admin, space for operation menu should be reserverd -->
   <!-- carousel part -->
   <div class="content" id="carousel-content">
     <div class="carousel-box">
@@ -142,6 +142,11 @@
         </div>
       </div>
       {% endif %}
+
+      <div class="content clarification">
+        <h4 class="center-align">Note</h4>
+        <p> This website only provides single choice polls.First-past-the-post voting mechanism is applied, which means the vote option that gets the most votes is the winner. Each user can only vote for one option for once in each poll. The ranking is done by sorting the vote numbers of options, and is displayed in the chart under the poll.  </p>
+      </div>
 
     {% if current_user.administrator==1 or current_user.is_anonymous %}
       <br /><br /><br /><header class="lv1title sd-middle" id="allPoll-lv1title"><b>All Polls</b></header>
