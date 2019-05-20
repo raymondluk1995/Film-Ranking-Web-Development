@@ -11,7 +11,7 @@ The index page is the first landing page of this web application. What can be se
 
 In the login page, if the user has registered, he can login with the user name and password. Otherwise, a register button is for new users. When the user login, if he inputs a wrong user name or password, he will fail and an error message will show up at the bottom of the login form. If login successful, the user will redirect back to the index page.
 
-In the registration page, a new user need to input his username, password, and email address, and to choose the movie categories that he prefers. There are restrictions on input fields, if wrong inputs are detected, error message will show up in the registration form. After register successfully, the user will redirect back to the login page.
+In the register page, a new user need to input his username, password, and email address, and to choose the movie categories that he prefers. There are restrictions on input fields, if wrong inputs are detected, error message will show up in the registration form. After register successfully, the user will redirect back to the login page.
 
 ### Normal User
 After a normal user logins and gets redirected back to the index page, the user can see that polls are divided into three sections: Recommended Polls, Maybe You Like, Voted Polls. Recommended Polls are the un-voted polls in the user's favourite movie categories; Maybe You Like part contains un-voted polls that are not in the user's favourite movie categories; Voted Polls part contains the polls the user has voted before.
@@ -22,6 +22,14 @@ When a user wants to logout, he can click the user icon on the top right corner 
 
 ### Admin User
 After an admin user logins and gets redirected back to the index page, what can be seen is a menu of five buttons: Create Poll, Add User, Delete Poll, Delete User, Delete Response, the carousel, note, and all polls. Unlike a normal user, putting all polls in one section is supposed to be helpful for administration.
+
+After clicking the Create Poll button, the admin user goes to a page to create a new poll. In this page, the maximum options for creation is 10. This page is based on JavaScript and JQuery. If the user inputs something illegal, JavaScript will alert the user and not pass the values to the back end via AJAX.
+
+After clicking the Add User button, the admin user goes to the add user page. The page is similar to the register page, but one more option for deciding the admin attribute of the new user. If choose yes, then the new user is an administrator, otherwise, the new user is just a normal user.
+
+When the admin user goes to the delete poll page, a multi-select form is provided. An admin user can delete multiple polls in one time. After a poll is deleted, its associated data (options and response) is also removed.
+
+Similar to the delete poll page, in delete user page, admin user can delete multiple users in one time and associated data will be also deleted. The delete response page is the same case.
 
 
 
@@ -40,33 +48,18 @@ To exit the environment:
 `$deactivate`
 
 ### Prerequisites
-
-Requires python3, flask, venv, and sqlite
-
+Python3 environment
 
 ### Installing
 
-Install python3, sqlite3, flask, wtf,sqlalchemy
-
 1. Set up a virtual environment:
- - use pip or another package manager to install virtualenv package `pip install virtualenv`
+ - `python3 -m venv venv`
+ - Or use pip or another package manager to install virtualenv package `pip install virtualenv`
  - start the provided virtual environment
    `source venv/bin/activate`
- - This should include flask and all the required packages
- `pip install flask`
- `pip install flask_script`
- `pip install python-dotenv`
- `pip install flask-wtf`
- `pip install flask-sqlalchemy`
- `pip install flask-migrate`
- `pip install flask-login`
- `pip install wtforms_sqlalchemy`
-<<<<<<< HEAD
+ -
 
-=======
-
->>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
-2  [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
+2. [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
   In \Linux, `sudo apt-get install sqlite`
 3. Build the database: `flask db init`
 4. `flask run`
