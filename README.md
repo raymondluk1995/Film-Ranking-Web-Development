@@ -1,7 +1,9 @@
 # CITS3403-Project
 
 The project is a simple flask web app for movie polls. After login, users can vote for their favourite movie in each poll for once.
+
 The purpose of this web application is getting the movie lover community together to vote for their favourite movies, expressing their preference and letting them know how do others think of movies.
+
 The social choice mechanism used is First Past the Post Voting. In each poll, a user can only vote for one candidate, and the candidate with the most votes ranks the first. The reason of applying this mechanism is that it can enable charts to give users an intuitionistic view of how many users are involved in a poll and how is the distribution of their favour. Moreover, this mechanism needs the least time to vote.
 
 ## Architecture
@@ -9,20 +11,20 @@ The index page is the first landing page of this web application. What can be se
 
 In the login page, if the user has registered, he can login with the user name and password. Otherwise, a register button is for new users. When the user login, if he inputs a wrong user name or password, he will fail and an error message will show up at the bottom of the login form. If login successful, the user will redirect back to the index page.
 
-In the registration page, a new user need to input his username, password, and email address, and to choose the movie categories that he prefers. There are restrictions on input fields, if wrong inputs are detected, error message will show up in the registration form.
+In the registration page, a new user need to input his username, password, and email address, and to choose the movie categories that he prefers. There are restrictions on input fields, if wrong inputs are detected, error message will show up in the registration form. After register successfully, the user will redirect back to the login page.
 
 ### Normal User
 After a normal user logins and gets redirected back to the index page, the user can see that polls are divided into three sections: Recommended Polls, Maybe You Like, Voted Polls. Recommended Polls are the un-voted polls in the user's favourite movie categories; Maybe You Like part contains un-voted polls that are not in the user's favourite movie categories; Voted Polls part contains the polls the user has voted before.
 
+When a user clicks a un-voted poll tag on the index page, he is directed to the template page which renders the corresponding poll. What can be seen are a form displaying options, a bar chart showing the current voting rank and vote numbers, a pie chart showing the vote proportions of each option. After the user commits his choice, the page gets refreshed and the user can see the latest result after his vote. At this moment, the commit button changes to a dummy button showing "Voted".
 
-<<<<<<< HEAD
-=======
-A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users. Mechanism that we using is First past the post voting.
-An adminstrator view, that can add and delete polls, delete responses, and add and delete users.
-An user(login) view, that can view polls and current standings, and submit responses to polls.
-A general view that can just view polls.
+When a user wants to logout, he can click the user icon on the top right corner in the navigation bar, and a dialog box pops out asking whether the user wants to logout. If the user clicks the Logout button, he finishes the logout process and gets redirected back to the index page.
 
->>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
+### Admin User
+After an admin user logins and gets redirected back to the index page, what can be seen is a menu of five buttons: Create Poll, Add User, Delete Poll, Delete User, Delete Response, the carousel, note, and all polls. Unlike a normal user, putting all polls in one section is supposed to be helpful for administration.
+
+
+
 ## Getting Started
 
 Activate the python virtual environment:
@@ -62,7 +64,7 @@ Install python3, sqlite3, flask, wtf,sqlalchemy
 <<<<<<< HEAD
 
 =======
-  
+
 >>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
 2  [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
   In \Linux, `sudo apt-get install sqlite`
@@ -102,10 +104,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Built following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
 * Built following the [Pair up Flask App](https://github.com/drtnf/cits3403-pair-up) by **Tim French**
-<<<<<<< HEAD
 * Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm)
-=======
-* Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm) 
->>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
+* Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm)
 * Build following the [Form Submission Using Ajax, PHP and Javascript](https://www.formget.com/form-submission-using-ajax-php-and-javascript/)
 * Build following the [Submit AJAX Forms with jQuery and Flask](https://www.youtube.com/watch?v=IZWtHsM3Y5A)
