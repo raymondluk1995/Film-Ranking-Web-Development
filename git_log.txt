@@ -1,3 +1,128 @@
+commit 942ca3ea84574f51824823b34dfb21eaef262c5c
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 16:38:44 2019 +0800
+
+    Some grammar mistakes in README fixed
+
+commit e82b09ed7e6465b81517b9b1246436b54389f6aa
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 16:20:52 2019 +0800
+
+    Minor modifications
+    
+    In template html, show what the user has voted. Add some test functions in the test1.py. Make the note in the index html look better
+
+commit 76880f6de0d5544e3f4b625723f5ef07ecbae908
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 15:33:45 2019 +0800
+
+    Some grammar mistakes in ReadMe fixed
+
+commit c974acdeab5f702c6f918d86f6702047b97b1f86
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 14:57:32 2019 +0800
+
+    Commit before submission
+
+commit fc46f9d1305e7336491393baf54a5150537a6258
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 13:52:06 2019 +0800
+
+    ReadMe update test
+
+commit 1fc0b78751684dec9b941b2ce8cbffad9df019de
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 13:24:57 2019 +0800
+
+    requirement txt added, also test the ReadMe
+
+commit 03217455928c58ed5e7a953405d234774c4dc859
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 11:41:57 2019 +0800
+
+    small changes
+
+commit f6e18849c5caa5f381643a51a1937133b8deccde
+Merge: 9f63f31 a4a1e19
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 11:19:06 2019 +0800
+
+    Update README.md
+
+commit 9f63f3109e1088d996c7faf4c13f0a8888cb8a36
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Mon May 20 11:18:11 2019 +0800
+
+    Note in index.html added, readme modified
+
+commit a4a1e1997db1de64ad4b0cd5800e3a0215efb214
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sun May 19 20:24:42 2019 +0800
+
+    Update README.md
+
+commit 8778c1b7ce2bc31c480e07354854e569e1c29d1b
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat May 18 23:25:44 2019 +0800
+
+    Add flash features, add new data, add a "voted poll" part
+
+commit e2f836d97569c4536006f8967111520cfc431ec6
+Merge: 19ae71e a397264
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat May 18 19:00:57 2019 +0800
+
+    Merge branch 'master' of https://github.com/raymondluk1995/CITS3403-Project
+
+commit 19ae71ec9585b90b0978076e5c04917d0e2d68f1
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat May 18 19:00:32 2019 +0800
+
+    Add description part in js
+
+commit a3972647d1b8b95fcd086b700db7666d2ed53456
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 18 17:05:27 2019 +0800
+
+    Update README.md
+
+commit 25e3b41cae208f43cbcbe957b8a370242404410e
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 18 17:03:43 2019 +0800
+
+    Update README.md
+
+commit e28640c5d4944dcce62988a2d55c5bff92030376
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 18 17:01:55 2019 +0800
+
+    Update README.md
+
+commit 513ed448cae93cf32f4bd1134bd94f9cb4384030
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Sat May 18 16:33:45 2019 +0800
+
+    Add files via upload
+
+commit c355eeeb4d981fcb9c2beaea1540a7074f1a0066
+Merge: cd604e0 d10ba92
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat May 18 16:08:37 2019 +0800
+
+    Merge branch 'master' of https://github.com/raymondluk1995/CITS3403-Project
+
+commit cd604e0e5f37c79dd97b41e4f0c61703aff02f32
+Author: Minrui Lu <raymondluk1995@outlook.com>
+Date:   Sat May 18 16:05:57 2019 +0800
+
+    trivial tries from Raymond
+
+commit d10ba9237b296d7614e0d5621205402f52fb9b65
+Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
+Date:   Fri May 17 17:41:14 2019 +0800
+
+    Add files via upload
+
 commit acca32f9552987e7fe04c000dc3874ff93caa5d3
 Author: wenjing33 <48823062+wenjing33@users.noreply.github.com>
 Date:   Thu May 16 23:38:36 2019 +0800

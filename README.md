@@ -62,6 +62,9 @@ To exit the environment:
 ### Prerequisites
 Python3 environment
 
+### Dependencies
+flask, flask_script, python-dotenv, flask-wtf, flask-sqlalchemy, flask-migrate, flask-login, wtforms_sqlalchemy
+
 ### Installing
 
 1. Set up a virtual environment:
