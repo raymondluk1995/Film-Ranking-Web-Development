@@ -15,6 +15,14 @@ In the registration page, a new user need to input his username, password, and e
 After a normal user logins and gets redirected back to the index page, the user can see that polls are divided into three sections: Recommended Polls, Maybe You Like, Voted Polls. Recommended Polls are the un-voted polls in the user's favourite movie categories; Maybe You Like part contains un-voted polls that are not in the user's favourite movie categories; Voted Polls part contains the polls the user has voted before.
 
 
+<<<<<<< HEAD
+=======
+A simple flask app for movie polls.The application perform voting or ranking activity (view vote result), based on the inputs from users. Mechanism that we using is First past the post voting.
+An adminstrator view, that can add and delete polls, delete responses, and add and delete users.
+An user(login) view, that can view polls and current standings, and submit responses to polls.
+A general view that can just view polls.
+
+>>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
 ## Getting Started
 
 Activate the python virtual environment:
@@ -51,7 +59,11 @@ Install python3, sqlite3, flask, wtf,sqlalchemy
  `pip install flask-migrate`
  `pip install flask-login`
  `pip install wtforms_sqlalchemy`
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
 2  [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
   In \Linux, `sudo apt-get install sqlite`
 3. Build the database: `flask db init`
@@ -90,6 +102,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Built following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
 * Built following the [Pair up Flask App](https://github.com/drtnf/cits3403-pair-up) by **Tim French**
+<<<<<<< HEAD
 * Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm)
+=======
+* Build following the [How to Create a Login Form with Ajax](https://www.webucator.com/how-to/how-create-login-form-with-ajax.cfm) 
+>>>>>>> a4a1e1997db1de64ad4b0cd5800e3a0215efb214
 * Build following the [Form Submission Using Ajax, PHP and Javascript](https://www.formget.com/form-submission-using-ajax-php-and-javascript/)
 * Build following the [Submit AJAX Forms with jQuery and Flask](https://www.youtube.com/watch?v=IZWtHsM3Y5A)
